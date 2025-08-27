@@ -155,7 +155,8 @@ export default function AboutSection() {
               
               {/* Floating Badge */}
               <motion.div
-                animate={{ float: true }}
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute -bottom-4 -right-4 bg-white rounded-xl shadow-xl p-4"
               >
                 <div className="flex items-center space-x-2">
