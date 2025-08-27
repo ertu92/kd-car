@@ -89,40 +89,7 @@ export default function ImpressumPage() {
             </div>
           </section>
 
-          {/* Content Responsibility */}
-          <section>
-            <div className="flex items-center space-x-3 mb-6">
-              <User className="w-6 h-6 text-blue-600" />
-              <h2 className="text-2xl font-bold text-gray-900">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
-            </div>
-            <div className="space-y-4 text-gray-700">
-              <div>
-                <p className="font-semibold">Ismet Muhlis Demirel</p>
-                <p>Mülheimerstraße 33</p>
-                <p>46045 Oberhausen</p>
-                <p>Deutschland</p>
-              </div>
-            </div>
-          </section>
 
-          {/* Business Registration */}
-          <section>
-            <div className="flex items-center space-x-3 mb-6">
-              <FileText className="w-6 h-6 text-blue-600" />
-              <h2 className="text-2xl font-bold text-gray-900">Aufsichtsbehörde</h2>
-            </div>
-            <div className="space-y-4 text-gray-700">
-              <p>
-                <span className="font-medium">Zuständige Kammer:</span> Handwerkskammer Musterstadt
-              </p>
-              <p>
-                <span className="font-medium">Verliehen durch:</span> Deutschland
-              </p>
-              <p>
-                <span className="font-medium">Umsatzsteuer-ID:</span> DE123456789
-              </p>
-            </div>
-          </section>
 
           {/* Professional Information */}
           <section>
