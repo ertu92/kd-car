@@ -37,43 +37,43 @@ export default function HeroSection() {
           <div className="absolute inset-0 bg-black/30"></div>
        </div>
 
-      {/* Content */}
-      <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+            {/* Content */}
+      <div className="relative z-10 text-center text-white px-8 sm:px-12 lg:px-16 max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="space-y-8"
+          className="space-y-6 sm:space-y-8"
         >
                      
 
-          {/* Main Heading */}
+                    {/* Main Heading */}
                      <motion.h1
-             initial={{ opacity: 0, y: 30 }}
-             animate={{ opacity: 1, y: 0 }}
-             transition={{ duration: 0.8, delay: 0.3 }}
-             className="text-5xl sm:text-6xl lg:text-8xl font-display font-black leading-tight"
-           >
-             <span className="bg-gradient-to-r from-blue-500 via-primary-500 to-blue-600 bg-clip-text text-transparent">
-               PROFESSIONELLES
-             </span>
-             <br />
-             <span className="text-white drop-shadow-2xl">FAHRZEUG-TUNING</span>
-             <br />
-             <span className="text-3xl sm:text-4xl lg:text-5xl text-gray-300 font-medium">
-               & FOLIERUNG
-             </span>
-           </motion.h1>
+               initial={{ opacity: 0, y: 30 }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ duration: 0.8, delay: 0.3 }}
+               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-black leading-tight"
+             >
+               <span className="bg-gradient-to-r from-blue-500 via-primary-500 to-blue-600 bg-clip-text text-transparent">
+                 PREMIUM
+               </span>
+               <br />
+               <span className="text-white drop-shadow-2xl">AUTO-TUNING</span>
+               <br />
+               <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-gray-300 font-medium">
+                 & FOLIERUNG
+               </span>
+             </motion.h1>
 
           {/* Subtitle */}
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl sm:text-2xl text-gray-200 max-w-4xl mx-auto leading-relaxed font-light"
+            className="text-lg sm:text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed font-light px-4"
           >
-            Verwandeln Sie Ihr Fahrzeug mit modernster Tuning-Technologie und Premium-Vinylfolierung. 
-            Von Leistungssteigerungen bis hin zu atemberaubenden visuellen Transformationen - wir verwirklichen Ihre Vision.
+            Professionelles Fahrzeug-Tuning und Premium-Folierung. 
+            Wir verwirklichen Ihre Vision mit höchster Qualität.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -81,7 +81,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="flex justify-center items-center pt-12"
+            className="flex justify-center items-center pt-8 sm:pt-12"
           >
                          <button 
                            onClick={() => {
@@ -90,11 +90,11 @@ export default function HeroSection() {
                                contactSection.scrollIntoView({ behavior: 'smooth' });
                              }
                            }}
-                           className="group relative overflow-hidden bg-gradient-to-r from-blue-600 to-primary-600 hover:from-blue-700 hover:to-primary-700 text-white text-lg px-10 py-5 rounded-xl font-bold shadow-2xl transform hover:scale-105 transition-all duration-300"
+                           className="group relative overflow-hidden bg-gradient-to-r from-blue-600 to-primary-600 hover:from-blue-700 hover:to-primary-700 text-white text-base sm:text-lg px-6 sm:px-10 py-4 sm:py-5 rounded-xl font-bold shadow-2xl transform hover:scale-105 transition-all duration-300"
                          >
-               <span className="flex items-center space-x-3">
+               <span className="flex items-center space-x-2 sm:space-x-3">
                  <span>BERATUNG BUCHEN</span>
-                 <Play className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
+                 <Play className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform duration-300" />
                </span>
                <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-primary-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
              </button>
