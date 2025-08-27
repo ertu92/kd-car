@@ -1,0 +1,41 @@
+{
+  "name": "kd-car-website",
+  "version": "1.0.0",
+  "description": "Modern car detailing and wrapping website for KD-CAR",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@types/nodemailer": "^7.0.1",
+    "autoprefixer": "^10.4.16",
+    "framer-motion": "^10.16.0",
+    "lucide-react": "^0.292.0",
+    "next": "^14.0.0",
+    "nodemailer": "^7.0.5",
+    "postcss": "^8.4.31",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^3.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "eslint": "^8.51.0",
+    "eslint-config-next": "^14.0.0",
+    "typescript": "^5.2.0"
+  },
+  "keywords": [
+    "car",
+    "detailing",
+    "wrapping",
+    "auto",
+    "germany"
+  ],
+  "author": "KD-CAR",
+  "license": "MIT"
+}
