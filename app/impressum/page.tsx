@@ -101,12 +101,7 @@ export default function ImpressumPage() {
               <p>
                 <span className="font-medium">Berufsbezeichnung:</span> Kfz-Meister
               </p>
-              <p>
-                <span className="font-medium">Zuständige Kammer:</span> Handwerkskammer Musterstadt
-              </p>
-              <p>
-                <span className="font-medium">Verliehen durch:</span> Deutschland
-              </p>
+
               <p>
                 <span className="font-medium">Folgende berufsrechtliche Regelungen können eingesehen werden:</span>
               </p>
