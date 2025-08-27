@@ -3,10 +3,12 @@
 import { useState, useEffect } from 'react'
 import { Menu, X, Phone, MapPin } from 'lucide-react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const router = useRouter()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,6 +17,20 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  const handleNavigation = (sectionId: string) => {
+    // Wenn wir nicht auf der Hauptseite sind, zuerst dorthin navigieren
+    if (window.location.pathname !== '/') {
+      router.push(`/#${sectionId}`)
+    } else {
+      // Wenn wir bereits auf der Hauptseite sind, einfach scrollen
+      const element = document.getElementById(sectionId)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
+    }
+    setIsMenuOpen(false)
+  }
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-[9999] w-full transition-all duration-300 ${
@@ -42,38 +58,38 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <Link 
-              href="#home" 
+            <button 
+              onClick={() => handleNavigation('home')}
               className={`font-medium transition-colors duration-200 ${
                 isScrolled ? 'text-dark-700 hover:text-primary-600' : 'text-white hover:text-accent-300'
               }`}
             >
               Home
-            </Link>
-            <Link 
-              href="#services" 
+            </button>
+            <button 
+              onClick={() => handleNavigation('services')}
               className={`font-medium transition-colors duration-200 ${
                 isScrolled ? 'text-dark-700 hover:text-primary-600' : 'text-white hover:text-accent-300'
               }`}
             >
               Leistungen
-            </Link>
-            <Link 
-              href="#about" 
+            </button>
+            <button 
+              onClick={() => handleNavigation('about')}
               className={`font-medium transition-colors duration-200 ${
                 isScrolled ? 'text-dark-700 hover:text-primary-600' : 'text-white hover:text-accent-300'
               }`}
             >
               Über uns
-            </Link>
-            <Link 
-              href="#contact" 
+            </button>
+            <button 
+              onClick={() => handleNavigation('contact')}
               className={`font-medium transition-colors duration-200 ${
                 isScrolled ? 'text-dark-700 hover:text-primary-600' : 'text-white hover:text-accent-300'
               }`}
             >
               Kontakt
-            </Link>
+            </button>
             <Link 
               href="/impressum" 
               className={`font-medium transition-colors duration-200 ${
@@ -106,34 +122,30 @@ export default function Header() {
         {isMenuOpen && (
           <div className="md:hidden bg-white rounded-lg shadow-xl mt-4 p-6 z-[9999]">
             <nav className="flex flex-col space-y-4">
-              <Link 
-                href="#home" 
-                className="text-dark-700 hover:text-primary-600 font-medium py-2"
-                onClick={() => setIsMenuOpen(false)}
+              <button 
+                onClick={() => handleNavigation('home')}
+                className="text-dark-700 hover:text-primary-600 font-medium py-2 text-left"
               >
                 Home
-              </Link>
-              <Link 
-                href="#services" 
-                className="text-dark-700 hover:text-primary-600 font-medium py-2"
-                onClick={() => setIsMenuOpen(false)}
+              </button>
+              <button 
+                onClick={() => handleNavigation('services')}
+                className="text-dark-700 hover:text-primary-600 font-medium py-2 text-left"
               >
                 Leistungen
-              </Link>
-              <Link 
-                href="#about" 
-                className="text-dark-700 hover:text-primary-600 font-medium py-2"
-                onClick={() => setIsMenuOpen(false)}
+              </button>
+              <button 
+                onClick={() => handleNavigation('about')}
+                className="text-dark-700 hover:text-primary-600 font-medium py-2 text-left"
               >
                 Über uns
-              </Link>
-              <Link 
-                href="#contact" 
-                className="text-dark-700 hover:text-primary-600 font-medium py-2"
-                onClick={() => setIsMenuOpen(false)}
+              </button>
+              <button 
+                onClick={() => handleNavigation('contact')}
+                className="text-dark-700 hover:text-primary-600 font-medium py-2 text-left"
               >
                 Kontakt
-              </Link>
+              </button>
               <Link 
                 href="/impressum" 
                 className="text-dark-700 hover:text-primary-600 font-medium py-2"
