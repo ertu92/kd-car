@@ -19,7 +19,23 @@ import {
   Phone
 } from 'lucide-react'
 
-const services = [
+interface Service {
+  id: number
+  title: string
+  subtitle: string
+  description: string
+  icon: React.ComponentType<{ className?: string }>
+  image: string
+  features: string[]
+  price: string
+  detailedDescription: string
+  process: string[]
+  benefits: string[]
+  duration: string
+  warranty: string
+}
+
+const services: Service[] = [
   {
     id: 1,
     title: 'PERFORMANCE TUNING',
@@ -179,9 +195,9 @@ const services = [
 ]
 
 export default function ServicesSection() {
-  const [selectedService, setSelectedService] = useState(null)
+  const [selectedService, setSelectedService] = useState<Service | null>(null)
 
-  const openModal = (service) => {
+  const openModal = (service: Service) => {
     setSelectedService(service)
   }
 
