@@ -88,15 +88,6 @@ export default function Header() {
           <div className="hidden lg:flex items-center space-x-4">
             <div className="flex items-center space-x-2 text-sm">
               <Phone className="w-4 h-4 text-primary-600" />
-              <span className={isScrolled ? 'text-dark-700' : 'text-white'}>
-                0177 3225218
-              </span>
-            </div>
-            <div className="flex items-center space-x-2 text-sm">
-              <MapPin className="w-4 h-4 text-primary-600" />
-              <span className={isScrolled ? 'text-dark-700' : 'text-white'}>
-                Deutschland
-              </span>
             </div>
           </div>
 
@@ -154,11 +145,6 @@ export default function Header() {
             <div className="mt-6 pt-6 border-t border-gray-200">
               <div className="flex items-center space-x-2 text-sm text-dark-700 mb-2">
                 <Phone className="w-4 h-4 text-primary-600" />
-                <span>0177 3225218</span>
-              </div>
-              <div className="flex items-center space-x-2 text-sm text-dark-700">
-                <MapPin className="w-4 h-4 text-primary-600" />
-                <span>Deutschland</span>
               </div>
             </div>
           </div>
