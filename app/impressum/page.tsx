@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
-import { ArrowLeft, Mail, Phone, MapPin, Building, User, Shield, FileText } from 'lucide-react'
+import { Mail, Phone, MapPin, Building, Shield, FileText } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Impressum - KD-CAR | Rechtliche Informationen',
@@ -11,17 +10,8 @@ export default function ImpressumPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-primary-600 text-white">
+      <div className="bg-gradient-to-r from-blue-600 to-primary-600 text-white pt-10">
         <div className="max-w-4xl mx-auto px-4 py-16">
-          <div className="flex items-center mb-6">
-            <Link 
-              href="/" 
-              className="flex items-center space-x-2 text-white hover:text-accent-200 transition-colors duration-200"
-            >
-              <ArrowLeft className="w-5 h-5" />
-              <span>Zurück zur Startseite</span>
-            </Link>
-          </div>
           <h1 className="text-4xl font-bold mb-4">Impressum</h1>
           <p className="text-xl text-white/90">
             Rechtliche Informationen und Angaben gemäß § 5 TMG
@@ -70,7 +60,7 @@ export default function ImpressumPage() {
                   <Mail className="w-5 h-5 text-blue-600" />
                   <div>
                     <p className="font-medium">E-Mail:</p>
-                    <p>inf@kd-car.de</p>
+                    <p>info@kd-car.de</p>
                   </div>
                 </div>
               </div>
@@ -196,16 +186,6 @@ export default function ImpressumPage() {
             </div>
           </section>
 
-          {/* Back to Home Button */}
-          <div className="pt-8 border-t border-gray-200">
-            <Link 
-              href="/"
-              className="inline-flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200"
-            >
-              <ArrowLeft className="w-5 h-5" />
-              <span>Zurück zur Startseite</span>
-            </Link>
-          </div>
         </div>
       </div>
     </div>

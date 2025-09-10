@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Menu, X, Phone, MapPin } from 'lucide-react'
+import { Menu, X, Phone } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
@@ -82,6 +82,14 @@ export default function Header() {
             >
               Über uns
             </button>
+            <Link 
+              href="/inventory" 
+              className={`font-medium transition-colors duration-200 ${
+                isScrolled ? 'text-dark-700 hover:text-primary-600' : 'text-white hover:text-accent-300'
+              }`}
+            >
+              Fahrzeugbestand
+            </Link>
             <button 
               onClick={() => handleNavigation('contact')}
               className={`font-medium transition-colors duration-200 ${
@@ -140,6 +148,13 @@ export default function Header() {
               >
                 Über uns
               </button>
+              <Link 
+                href="/inventory" 
+                className="text-dark-700 hover:text-primary-600 font-medium py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Fahrzeugbestand
+              </Link>
               <button 
                 onClick={() => handleNavigation('contact')}
                 className="text-dark-700 hover:text-primary-600 font-medium py-2 text-left"

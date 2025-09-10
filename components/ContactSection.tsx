@@ -96,7 +96,7 @@ export default function ContactSection() {
         setSubmitStatus('error')
         setSubmitMessage(data.error || 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.')
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus('error')
       setSubmitMessage('Ein Fehler ist aufgetreten. Bitte überprüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.')
     } finally {
@@ -325,6 +325,20 @@ export default function ContactSection() {
                         href="https://www.google.com/maps/search/Tannenbergstraße+74,+46045+Oberhausen"
                         target="_blank"
                         rel="noopener noreferrer"
+                        className="text-blue-300 font-medium hover:text-blue-200 transition-colors duration-200 cursor-pointer"
+                      >
+                        {info.value}
+                      </a>
+                    ) : info.title === 'Telefon' ? (
+                      <a 
+                        href="tel:+491773225218"
+                        className="text-blue-300 font-medium hover:text-blue-200 transition-colors duration-200 cursor-pointer"
+                      >
+                        {info.value}
+                      </a>
+                    ) : info.title === 'E-Mail' ? (
+                      <a 
+                        href="mailto:inf@kd-car.de"
                         className="text-blue-300 font-medium hover:text-blue-200 transition-colors duration-200 cursor-pointer"
                       >
                         {info.value}

@@ -1,17 +1,9 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import { Play, ChevronDown, Star, Shield, Zap } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 export default function HeroSection() {
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false)
-
-  useEffect(() => {
-    // Simulate video loading
-    const timer = setTimeout(() => setIsVideoLoaded(true), 1000)
-    return () => clearTimeout(timer)
-  }, [])
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">

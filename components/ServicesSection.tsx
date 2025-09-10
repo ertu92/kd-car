@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
 import { 
   Sparkles, 
   Wrench, 
@@ -15,8 +16,7 @@ import {
   CheckCircle,
   Clock,
   Award,
-  Users,
-  Phone
+  Users
 } from 'lucide-react'
 
 interface Service {
@@ -250,10 +250,13 @@ export default function ServicesSection() {
             >
               {/* Image */}
               <div className="relative h-48 overflow-hidden">
-                <img
+                <Image
                   src={service.image}
                   alt={service.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  priority={service.image === '/images/carwrap.jpg'}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-900/60 to-transparent" />
                 <div className="absolute top-4 right-4">
