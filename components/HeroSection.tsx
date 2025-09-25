@@ -50,10 +50,10 @@ export default function HeroSection() {
                  PREMIUM
                </span>
                <br />
-               <span className="text-white drop-shadow-2xl">AUTO-TUNING</span>
+              <span className="text-white drop-shadow-2xl">AUTO-Instandsetzung</span>
                <br />
                <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-gray-300 font-medium">
-                 & FOLIERUNG
+                & Aufbereitung
                </span>
              </motion.h1>
 
@@ -64,8 +64,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-lg sm:text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed font-light px-4"
           >
-            Professionelles Fahrzeug-Tuning und Premium-Folierung. 
-            Wir verwirklichen Ihre Vision mit höchster Qualität.
+            Unfallinstandsetzung, Lackierung, Smart Repair, Aufbereitung, Felgenreparatur und Beulendoktor – wir machen Ihr Auto wieder wie neu.
           </motion.p>
 
           {/* CTA Buttons */}

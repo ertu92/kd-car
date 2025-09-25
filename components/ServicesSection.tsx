@@ -38,12 +38,12 @@ interface Service {
 const services: Service[] = [
   {
     id: 1,
-    title: 'PERFORMANCE TUNING',
+    title: 'AN- UND VERKAUF',
     subtitle: 'Motor & ECU',
-    description: 'Entfesseln Sie das wahre Potenzial Ihres Fahrzeugs mit professionellem ECU-Tuning, Auspuffanlagen und Leistungsverbesserungen.',
+    description: 'Wir kaufen Ihr Auto an oder nehmen es in Zahlung für ein Neues.',
     icon: Zap,
     image: 'https://images.unsplash.com/photo-1563720223185-11003d516935?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    features: ['ECU-Neukalibrierung', 'Auspuffanlagen', 'Luftansaugung', 'Turbo-Upgrades'],
+    features: ['Schnelle Abwicklung', 'Garantie inklusive', 'Lieferung möglich'],
     price: 'ab €299',
     detailedDescription: 'Unser Performance Tuning beginnt mit einer gründlichen Analyse Ihres Fahrzeugs. Wir verwenden modernste Diagnosegeräte und Software, um das volle Potenzial Ihres Motors freizusetzen.',
     process: [
@@ -64,25 +64,25 @@ const services: Service[] = [
   },
   {
     id: 2,
-    title: 'AUTOFOLIERUNG',
-    subtitle: 'Voll- & Teilfolierung',
-    description: 'Verwandeln Sie Ihr Fahrzeug mit Premium-Vinylfolien. Wählen Sie aus matten, glänzenden, Carbon-Faser- und individuellen Designs.',
+    title: 'INSTANDSETZUNG',
+    subtitle: 'Lackierung & Reparatur',
+    description: 'Professionelle Fahrzeug-Instandsetzung mit modernsten Lackiertechniken und Smart Repair-Methoden für perfekte Ergebnisse.',
     icon: Palette,
     image: '/images/carwrap.jpg',
-    features: ['Vollfahrzeug-Folierung', 'Teilfolierung', 'Steinschutzfolierung', 'Farbfolierung'],
+    features: ['Lackieren', 'Smart Repair', 'Teilfolierung', 'Professionelle Aufbereitung'],
     price: 'ab €899',
-    detailedDescription: 'Wir verwenden ausschließlich hochwertige Vinyl-Materialien von führenden Herstellern. Jede Folierung wird mit höchster Präzision und Sorgfalt ausgeführt.',
+    detailedDescription: 'Wir verwenden ausschließlich hochwertige Lackmaterialien und moderne Smart Repair-Techniken. Jede Instandsetzung wird mit höchster Präzision und Sorgfalt ausgeführt.',
     process: [
-      'Beratung und Design-Entscheidung',
+      'Beratung und Schadensanalyse',
       'Fahrzeugvorbereitung und Reinigung',
-      'Präzise Folienanpassung',
+      'Smart Repair oder Volllackierung',
       'Professionelle Verarbeitung',
       'Qualitätskontrolle und Finish'
     ],
     benefits: [
-      'Schutz der Original-Lackierung',
-      'Einfache Entfernung möglich',
-      'Vielseitige Gestaltungsoptionen',
+      'Moderne Smart Repair-Techniken',
+      'Hochwertige Lackmaterialien',
+      'Professionelle Verarbeitung',
       'Langlebige Qualität'
     ],
     duration: '3-7 Tage',
