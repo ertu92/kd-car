@@ -228,12 +228,12 @@ export default function ServicesSection() {
           </motion.div>
           
           <h2 className="text-5xl sm:text-6xl font-display font-black text-dark-900 mb-6">
-            PREMIUM <span className="bg-gradient-to-r from-blue-500 via-primary-500 to-blue-600 bg-clip-text text-transparent">FAHRZEUG-TUNING</span>
+            PREMIUM <span className="bg-gradient-to-r from-blue-500 via-primary-500 to-blue-600 bg-clip-text text-transparent">FAHRZEUG-INSTANDSETZUNG</span>
           </h2>
           
           <p className="text-xl text-gray-600 max-w-4xl mx-auto font-light">
-            Verwandeln Sie Ihr Fahrzeug mit unserem umfassenden Angebot an professionellen Tuning- und Folierungsdienstleistungen. 
-            Von Leistungssteigerungen bis hin zu atemberaubenden visuellen Transformationen - wir liefern Exzellenz in jedem Detail.
+            Verwandeln Sie Ihr Fahrzeug mit unserem umfassenden Angebot an professioneller Aufbereitung, Reparatur und Instandsetzung. 
+            Von Smart Repair bis hin zu atemberaubenden visuellen Transformationen - wir liefern Exzellenz in jedem Detail.
           </p>
         </motion.div>
 
