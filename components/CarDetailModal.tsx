@@ -2,29 +2,12 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, ChevronLeft, ChevronRight, Maximize2, Minimize2, Calendar, Gauge, Settings, Palette, Zap, Phone, ZoomIn } from 'lucide-react'
+import { X, ChevronLeft, ChevronRight, Maximize2, Minimize2, Calendar, Gauge, Zap, Phone, ZoomIn } from 'lucide-react'
 import Image from 'next/image'
-
-interface Car {
-  id: number
-  make: string
-  model: string
-  year: number
-  price: number
-  mileage: number
-  image: string
-  images: string[]
-  engine: string
-  horsepower: string
-  transmission: string
-  exteriorColor: string
-  interiorColor: string
-  features: string[]
-  description: string
-}
+import type { InventoryCar } from '@/lib/carms'
 
 interface CarDetailModalProps {
-  car: Car
+  car: InventoryCar
   onClose: () => void
 }
 
@@ -211,7 +194,7 @@ export default function CarDetailModal({ car, onClose }: CarDetailModalProps) {
             <div className="lg:w-1/2 p-4 sm:p-6 overflow-y-auto flex-1 min-h-0">
               <div className="space-y-6">
                 {/* Basic Info */}
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
                   <div className="flex items-center space-x-3 p-4 bg-gray-50 rounded-xl">
                     <Calendar className="w-5 h-5 text-primary-600" />
                     <div>
@@ -227,35 +210,10 @@ export default function CarDetailModal({ car, onClose }: CarDetailModalProps) {
                     </div>
                   </div>
                   <div className="flex items-center space-x-3 p-4 bg-gray-50 rounded-xl">
-                    <Settings className="w-5 h-5 text-primary-600" />
-                    <div>
-                      <p className="text-sm text-dark-500">Motor</p>
-                      <p className="font-semibold text-dark-900">{car.engine}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-3 p-4 bg-gray-50 rounded-xl">
                     <Zap className="w-5 h-5 text-primary-600" />
                     <div>
                       <p className="text-sm text-dark-500">Leistung</p>
                       <p className="font-semibold text-dark-900">{car.horsepower}</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Colors */}
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="flex items-center space-x-3 p-4 bg-gray-50 rounded-xl">
-                    <Palette className="w-5 h-5 text-primary-600" />
-                    <div>
-                      <p className="text-sm text-dark-500">Außenfarbe</p>
-                      <p className="font-semibold text-dark-900">{car.exteriorColor}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center space-x-3 p-4 bg-gray-50 rounded-xl">
-                    <Palette className="w-5 h-5 text-primary-600" />
-                    <div>
-                      <p className="text-sm text-dark-500">Innenfarbe</p>
-                      <p className="font-semibold text-dark-900">{car.interiorColor}</p>
                     </div>
                   </div>
                 </div>

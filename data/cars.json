@@ -1,0 +1,140 @@
+[
+  {
+    "slug": "mercedes-g63-amg-2025",
+    "brand": "Mercedes-Benz",
+    "model": "G63 AMG",
+    "title": "G63 AMG Signature Edition",
+    "firstRegistration": "01/2025",
+    "kilometers": 100,
+    "transmission": "Automatic",
+    "power": "585 PS",
+    "price": 185000,
+    "vat": true,
+    "image": "/images/body.jpg",
+    "images": [
+      "/images/body.jpg",
+      "/images/carwrap.jpg",
+      "/images/interior.jpg",
+      "/images/reifen.jpg"
+    ],
+    "description": "Mercedes G63 AMG mit Performance Paket, nur 100 km Laufleistung und vollstaendiger Ausstattung.",
+    "features": [
+      "AMG Performance Paket",
+      "Premium Sound System",
+      "Sitzheizung vorn und hinten",
+      "Navigation",
+      "Blind Spot Assist",
+      "Adaptive Cruise Control"
+    ],
+    "engine": "5.0L V8",
+    "horsepower": "585 PS",
+    "exteriorColor": "Black",
+    "interiorColor": "Tan",
+    "fuelType": "Benzin",
+    "vehicleType": "SUV",
+    "url": null
+  },
+  {
+    "slug": "bmw-m8-competition-2024",
+    "brand": "BMW",
+    "model": "M8 Competition",
+    "title": "M8 Competition Carbon Package",
+    "firstRegistration": "05/2024",
+    "kilometers": 2500,
+    "transmission": "Automatic",
+    "power": "625 PS",
+    "price": 165000,
+    "vat": true,
+    "image": "/images/carwrap.jpg",
+    "images": [
+      "/images/carwrap.jpg",
+      "/images/body.jpg",
+      "/images/interior.jpg"
+    ],
+    "description": "BMW M8 Competition mit Carbon Paket, 625 PS und umfangreicher Komfortausstattung.",
+    "features": [
+      "M Competition Paket",
+      "Carbon Innenraumleisten",
+      "Harman Kardon Sound",
+      "Belueftete Sitze",
+      "Laserlicht",
+      "M Sportdifferential"
+    ],
+    "engine": "4.4L V8 Twin Turbo",
+    "horsepower": "625 PS",
+    "exteriorColor": "Alpine White",
+    "interiorColor": "Black",
+    "fuelType": "Benzin",
+    "vehicleType": "Coupe",
+    "url": null
+  },
+  {
+    "slug": "audi-rs6-avant-2023",
+    "brand": "Audi",
+    "model": "RS6 Avant",
+    "title": "RS6 Avant Performance",
+    "firstRegistration": "03/2023",
+    "kilometers": 8500,
+    "transmission": "Automatic",
+    "power": "600 PS",
+    "price": 145000,
+    "vat": true,
+    "image": "/images/interior.jpg",
+    "images": [
+      "/images/interior.jpg",
+      "/images/body.jpg",
+      "/images/carwrap.jpg"
+    ],
+    "description": "Audi RS6 Avant mit RS Performance Paket, ideal fuer Alltag und Trackdays.",
+    "features": [
+      "RS Sport Paket",
+      "Audi Virtual Cockpit",
+      "Bang Olufsen Sound",
+      "Massagesitze",
+      "Matrix LED",
+      "Quattro Allrad"
+    ],
+    "engine": "4.0L V8 Twin Turbo",
+    "horsepower": "600 PS",
+    "exteriorColor": "Nardo Gray",
+    "interiorColor": "Black and Red",
+    "fuelType": "Benzin",
+    "vehicleType": "Kombi",
+    "url": null
+  },
+  {
+    "slug": "porsche-911-turbo-s-2024",
+    "brand": "Porsche",
+    "model": "911 Turbo S",
+    "title": "911 Turbo S Weissach Spec",
+    "firstRegistration": "07/2024",
+    "kilometers": 1200,
+    "transmission": "PDK Automatic",
+    "power": "650 PS",
+    "price": 220000,
+    "vat": true,
+    "image": "/images/reifen.jpg",
+    "images": [
+      "/images/reifen.jpg",
+      "/images/body.jpg",
+      "/images/interior.jpg",
+      "/images/carwrap.jpg"
+    ],
+    "description": "Porsche 911 Turbo S mit Weissach Paket, Keramikbremsen und Track Ausstattung.",
+    "features": [
+      "Porsche Ceramic Brakes",
+      "Sport Chrono Paket",
+      "BOSE Sound",
+      "Sportsitze Plus",
+      "LED Matrix Scheinwerfer",
+      "Porsche Traction Management"
+    ],
+    "engine": "3.8L H6 Twin Turbo",
+    "horsepower": "650 PS",
+    "exteriorColor": "Guards Red",
+    "interiorColor": "Black",
+    "fuelType": "Benzin",
+    "vehicleType": "Coupe",
+    "url": null
+  }
+]

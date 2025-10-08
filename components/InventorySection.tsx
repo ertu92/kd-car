@@ -1,165 +1,114 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { Search, Grid, List } from 'lucide-react'
 import CarCard from './CarCard'
 import CarDetailModal from './CarDetailModal'
+import type { InventoryCar, DataSource } from '@/lib/carms'
 
-interface Car {
-  id: number
-  make: string
-  model: string
-  year: number
-  price: number
-  mileage: number
-  image: string
-  images: string[]
-  engine: string
-  horsepower: string
-  transmission: string
-  exteriorColor: string
-  interiorColor: string
-  features: string[]
-  description: string
+type ViewMode = 'grid' | 'list'
+
+type CarsResponse = {
+  cars: InventoryCar[]
+  source: DataSource
+  error?: string
 }
 
-// Sample car data - in a real app, this would come from an API
-const sampleCars = [
-  {
-    id: 1,
-    make: 'Mercedes-Benz',
-    model: 'G63 AMG',
-    year: 2025,
-    price: 185000,
-    mileage: 100,
-    image: '/images/body.jpg',
-    images: ['/images/body.jpg', '/images/carwrap.jpg', '/images/interior.jpg', '/images/reifen.jpg'],
-    engine: '5.0L V8',
-    horsepower: '585 PS',
-    transmission: 'Automatic',
-    exteriorColor: 'Black',
-    interiorColor: 'Tan',
-    features: [
-      'AMG Performance Package',
-      'Premium Sound System',
-      'Heated Seats',
-      'Navigation System',
-      'Blind Spot Assist',
-      'Adaptive Cruise Control'
-    ],
-    description: 'Ein außergewöhnlicher Mercedes-Benz G63 AMG mit nur 100 km Laufleistung. Dieses Fahrzeug bietet die perfekte Kombination aus Luxus und Performance.'
-  },
-  {
-    id: 2,
-    make: 'BMW',
-    model: 'M8 Competition',
-    year: 2024,
-    price: 165000,
-    mileage: 2500,
-    image: '/images/carwrap.jpg',
-    images: ['/images/carwrap.jpg', '/images/body.jpg', '/images/interior.jpg'],
-    engine: '4.4L V8 Twin-Turbo',
-    horsepower: '625 PS',
-    transmission: 'Automatic',
-    exteriorColor: 'Alpine White',
-    interiorColor: 'Black',
-    features: [
-      'M Competition Package',
-      'Carbon Fiber Trim',
-      'Harman Kardon Sound',
-      'Heated & Ventilated Seats',
-      'Laser Headlights',
-      'M Sport Differential'
-    ],
-    description: 'Der BMW M8 Competition ist ein Meisterwerk der Ingenieurskunst. Mit 625 PS und nur 2.500 km Laufleistung ist dieses Fahrzeug ein Traum für jeden Autoliebhaber.'
-  },
-  {
-    id: 3,
-    make: 'Audi',
-    model: 'RS6 Avant',
-    year: 2023,
-    price: 145000,
-    mileage: 8500,
-    image: '/images/interior.jpg',
-    images: ['/images/interior.jpg', '/images/body.jpg', '/images/carwrap.jpg'],
-    engine: '4.0L V8 Twin-Turbo',
-    horsepower: '600 PS',
-    transmission: 'Automatic',
-    exteriorColor: 'Nardo Gray',
-    interiorColor: 'Black/Red',
-    features: [
-      'RS Sport Package',
-      'Audi Virtual Cockpit',
-      'Bang & Olufsen Sound',
-      'Massage Seats',
-      'Matrix LED Headlights',
-      'Quattro All-Wheel Drive'
-    ],
-    description: 'Der Audi RS6 Avant kombiniert praktische Alltagstauglichkeit mit sportlicher Performance. Ein perfektes Familienauto mit 600 PS.'
-  },
-  {
-    id: 4,
-    make: 'Porsche',
-    model: '911 Turbo S',
-    year: 2024,
-    price: 220000,
-    mileage: 1200,
-    image: '/images/reifen.jpg',
-    images: ['/images/reifen.jpg', '/images/body.jpg', '/images/interior.jpg', '/images/carwrap.jpg'],
-    engine: '3.8L H6 Twin-Turbo',
-    horsepower: '650 PS',
-    transmission: 'PDK Automatic',
-    exteriorColor: 'Guards Red',
-    interiorColor: 'Black',
-    features: [
-      'Porsche Ceramic Brakes',
-      'Sport Chrono Package',
-      'BOSE Sound System',
-      'Sport Seats Plus',
-      'LED Matrix Headlights',
-      'Porsche Traction Management'
-    ],
-    description: 'Der Porsche 911 Turbo S ist die Krönung der 911-Serie. Mit 650 PS und nur 1.200 km Laufleistung ist dieses Fahrzeug ein absolutes Sammlerstück.'
-  }
-]
-
 export default function InventorySection() {
-  const [selectedCar, setSelectedCar] = useState<Car | null>(null)
+  const [cars, setCars] = useState<InventoryCar[]>([])
+  const [selectedCar, setSelectedCar] = useState<InventoryCar | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
+  const [viewMode, setViewMode] = useState<ViewMode>('grid')
   const [filterYear, setFilterYear] = useState('all')
   const [filterMake, setFilterMake] = useState('all')
+  const [dataSource, setDataSource] = useState<DataSource>('local')
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
-  const filteredCars = sampleCars.filter(car => {
-    const matchesSearch = car.make.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         car.model.toLowerCase().includes(searchTerm.toLowerCase())
-    const matchesYear = filterYear === 'all' || car.year.toString() === filterYear
-    const matchesMake = filterMake === 'all' || car.make === filterMake
-    
-    return matchesSearch && matchesYear && matchesMake
-  })
+  useEffect(() => {
+    let cancelled = false
 
-  const uniqueMakes = Array.from(new Set(sampleCars.map(car => car.make)))
-  const uniqueYears = Array.from(new Set(sampleCars.map(car => car.year))).sort((a, b) => b - a)
+    async function loadCars() {
+      setLoading(true)
 
-  // Force grid view on mobile devices
+      try {
+        const response = await fetch('/api/cars', { cache: 'no-store' })
+
+        if (!response.ok) {
+          throw new Error(`Request failed with status ${response.status}`)
+        }
+
+        const payload: CarsResponse = await response.json()
+        if (cancelled) return
+
+        const normalizedError =
+          typeof payload.error === 'string' && payload.error.trim().length > 0
+            ? payload.error.trim()
+            : null
+
+        setCars(payload.cars ?? [])
+        setDataSource(payload.source ?? 'local')
+        setError(normalizedError)
+      } catch (err) {
+        if (cancelled) return
+        console.error('Failed to load cars:', err)
+        setCars([])
+        setDataSource('local')
+        setError('Fahrzeuge konnten nicht geladen werden. Bitte spaeter erneut versuchen.')
+      } finally {
+        if (!cancelled) {
+          setLoading(false)
+        }
+      }
+    }
+
+    loadCars()
+
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 768 && viewMode === 'list') {
+      if (typeof window !== 'undefined' && window.innerWidth < 768 && viewMode === 'list') {
         setViewMode('grid')
       }
     }
 
-    // Check on mount
     handleResize()
-
-    // Add event listener
     window.addEventListener('resize', handleResize)
 
-    // Cleanup
     return () => window.removeEventListener('resize', handleResize)
   }, [viewMode])
+
+  const uniqueMakes = useMemo(
+    () => Array.from(new Set(cars.map((car) => car.make))).sort((a, b) => a.localeCompare(b)),
+    [cars]
+  )
+
+  const uniqueYears = useMemo(
+    () =>
+      Array.from(new Set(cars.map((car) => car.year)))
+        .filter((year): year is number => Number.isFinite(year))
+        .sort((a, b) => b - a),
+    [cars]
+  )
+
+  const filteredCars = useMemo(() => {
+    return cars.filter((car) => {
+      const matchesSearch =
+        car.make.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        car.model.toLowerCase().includes(searchTerm.toLowerCase())
+      const matchesYear = filterYear === 'all' || car.year.toString() === filterYear
+      const matchesMake = filterMake === 'all' || car.make === filterMake
+
+      return matchesSearch && matchesYear && matchesMake
+    })
+  }, [cars, searchTerm, filterYear, filterMake])
+
+  const showFallbackNotice = dataSource === 'local' && !loading && !error
 
   return (
     <section className="min-h-screen bg-gray-50 py-12">
@@ -208,8 +157,10 @@ export default function InventorySection() {
                 className="px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
               >
                 <option value="all">Alle Marken</option>
-                {uniqueMakes.map(make => (
-                  <option key={make} value={make}>{make}</option>
+                {uniqueMakes.map((make) => (
+                  <option key={make} value={make}>
+                    {make}
+                  </option>
                 ))}
               </select>
 
@@ -219,8 +170,10 @@ export default function InventorySection() {
                 className="px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
               >
                 <option value="all">Alle Jahre</option>
-                {uniqueYears.map(year => (
-                  <option key={year} value={year.toString()}>{year}</option>
+                {uniqueYears.map((year) => (
+                  <option key={year} value={year.toString()}>
+                    {year}
+                  </option>
                 ))}
               </select>
             </div>
@@ -230,9 +183,7 @@ export default function InventorySection() {
               <button
                 onClick={() => setViewMode('grid')}
                 className={`p-2 rounded-lg transition-all duration-300 ${
-                  viewMode === 'grid' 
-                    ? 'bg-white shadow-sm text-primary-600' 
-                    : 'text-dark-400 hover:text-dark-600'
+                  viewMode === 'grid' ? 'bg-white shadow-sm text-primary-600' : 'text-dark-400 hover:text-dark-600'
                 }`}
               >
                 <Grid className="w-5 h-5" />
@@ -240,9 +191,7 @@ export default function InventorySection() {
               <button
                 onClick={() => setViewMode('list')}
                 className={`p-2 rounded-lg transition-all duration-300 ${
-                  viewMode === 'list' 
-                    ? 'bg-white shadow-sm text-primary-600' 
-                    : 'text-dark-400 hover:text-dark-600'
+                  viewMode === 'list' ? 'bg-white shadow-sm text-primary-600' : 'text-dark-400 hover:text-dark-600'
                 }`}
               >
                 <List className="w-5 h-5" />
@@ -250,6 +199,26 @@ export default function InventorySection() {
             </div>
           </div>
         </motion.div>
+
+        {(error || showFallbackNotice) && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            className="mb-8 space-y-3"
+          >
+            {error && (
+              <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                {error}
+              </div>
+            )}
+            {showFallbackNotice && (
+              <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-700">
+                Hinweis: Fahrzeuge werden aktuell aus lokalen Beispieldaten angezeigt. Bitte CARMS-Konfiguration pruefen.
+              </div>
+            )}
+          </motion.div>
+        )}
 
         {/* Results Count */}
         <motion.div
@@ -259,7 +228,9 @@ export default function InventorySection() {
           className="mb-6"
         >
           <p className="text-dark-600">
-            {filteredCars.length} Fahrzeug{filteredCars.length !== 1 ? 'e' : ''} gefunden
+            {loading
+              ? 'Fahrzeuge werden geladen...'
+              : `${filteredCars.length} Fahrzeug${filteredCars.length !== 1 ? 'e' : ''} gefunden`}
           </p>
         </motion.div>
 
@@ -269,8 +240,8 @@ export default function InventorySection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
           className={`grid gap-6 ${
-            viewMode === 'grid' 
-              ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' 
+            viewMode === 'grid'
+              ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
               : 'grid-cols-1'
           }`}
         >
@@ -281,17 +252,13 @@ export default function InventorySection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <CarCard 
-                car={car} 
-                viewMode={viewMode}
-                onClick={() => setSelectedCar(car)}
-              />
+              <CarCard car={car} viewMode={viewMode} onClick={() => setSelectedCar(car)} />
             </motion.div>
           ))}
         </motion.div>
 
         {/* No Results */}
-        {filteredCars.length === 0 && (
+        {!loading && filteredCars.length === 0 && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -301,23 +268,14 @@ export default function InventorySection() {
             <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
               <Search className="w-12 h-12 text-gray-400" />
             </div>
-            <h3 className="text-xl font-semibold text-dark-900 mb-2">
-              Keine Fahrzeuge gefunden
-            </h3>
-            <p className="text-dark-600">
-              Versuchen Sie andere Suchbegriffe oder Filter zu verwenden.
-            </p>
+            <h3 className="text-xl font-semibold text-dark-900 mb-2">Keine Fahrzeuge gefunden</h3>
+            <p className="text-dark-600">Versuchen Sie andere Suchbegriffe oder Filter zu verwenden.</p>
           </motion.div>
         )}
       </div>
 
       {/* Car Detail Modal */}
-      {selectedCar && (
-        <CarDetailModal 
-          car={selectedCar} 
-          onClose={() => setSelectedCar(null)} 
-        />
-      )}
+      {selectedCar && <CarDetailModal car={selectedCar} onClose={() => setSelectedCar(null)} />}
     </section>
   )
 }

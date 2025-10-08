@@ -3,27 +3,10 @@
 import { motion } from 'framer-motion'
 import { Calendar, Gauge, Eye } from 'lucide-react'
 import Image from 'next/image'
-
-interface Car {
-  id: number
-  make: string
-  model: string
-  year: number
-  price: number
-  mileage: number
-  image: string
-  images: string[]
-  engine: string
-  horsepower: string
-  transmission: string
-  exteriorColor: string
-  interiorColor: string
-  features: string[]
-  description: string
-}
+import type { InventoryCar } from '@/lib/carms'
 
 interface CarCardProps {
-  car: Car
+  car: InventoryCar
   viewMode: 'grid' | 'list'
   onClick: () => void
 }
