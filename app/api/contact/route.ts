@@ -119,9 +119,9 @@ export async function POST(request: NextRequest) {
 
     if (error && typeof error === 'object' && 'code' in error) {
       if (error.code === 'EAUTH') {
-        errorMessage = 'Gmail-Authentifizierung fehlgeschlagen. Überprüfen Sie Ihre E-Mail-Anmeldedaten.'
+        errorMessage = 'E-Mail-Authentifizierung fehlgeschlagen. Bitte überprüfen Sie die Anmeldedaten.'
       } else if (error.code === 'ENOTFOUND') {
-        errorMessage = 'Verbindung zum E-Mail-Server fehlgeschlagen.'
+        errorMessage = 'Verbindung zum E-Mail-Server (Strato) fehlgeschlagen.'
       } else if (error.code === 'ETIMEDOUT') {
         errorMessage = 'E-Mail-Server-Timeout. Versuchen Sie es später erneut.'
       }
