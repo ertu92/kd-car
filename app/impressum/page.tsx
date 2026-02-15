@@ -52,15 +52,15 @@ export default function ImpressumPage() {
                   <Phone className="w-5 h-5 text-blue-600" />
                   <div>
                     <p className="font-medium">Telefon:</p>
-                    <p>0177 3225218</p>
+                    <a href="tel:+491773225218" className="text-blue-600 hover:text-blue-700 hover:underline">0177 3225218</a>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center space-x-3">
                   <Mail className="w-5 h-5 text-blue-600" />
                   <div>
                     <p className="font-medium">E-Mail:</p>
-                    <p>info@kd-car.de</p>
+                    <a href="mailto:info@kd-car.de" className="text-blue-600 hover:text-blue-700 hover:underline">info@kd-car.de</a>
                   </div>
                 </div>
               </div>

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Menu, X, Phone } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -8,6 +8,8 @@ import { useRouter } from 'next/navigation'
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isPhoneOpen, setIsPhoneOpen] = useState(false)
+  const phoneRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
 
   useEffect(() => {
@@ -17,6 +19,18 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (phoneRef.current && !phoneRef.current.contains(e.target as Node)) {
+        setIsPhoneOpen(false)
+      }
+    }
+    if (isPhoneOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [isPhoneOpen])
 
   const handleNavigation = (sectionId: string) => {
     // Wenn wir nicht auf der Hauptseite sind, zuerst dorthin navigieren
@@ -109,10 +123,31 @@ export default function Header() {
           </nav>
 
           {/* Contact Info */}
-          <div className="hidden lg:flex items-center space-x-4">
-            <div className="flex items-center space-x-2 text-sm">
-              <Phone className="w-4 h-4 text-primary-600" />
-            </div>
+          <div ref={phoneRef} className="hidden lg:flex items-center space-x-4 relative">
+            <button
+              onClick={() => setIsPhoneOpen(!isPhoneOpen)}
+              className="flex items-center space-x-2 text-sm p-2 rounded-lg hover:bg-white/10 transition-colors duration-200 cursor-pointer"
+            >
+              <Phone className="w-5 h-5 text-primary-600" />
+            </button>
+            {isPhoneOpen && (
+              <div className="absolute top-full right-0 mt-2 bg-white rounded-lg shadow-xl border border-gray-200 py-2 min-w-[200px] z-[10000]">
+                <a
+                  href="tel:+491773225218"
+                  className="flex items-center space-x-3 px-4 py-3 hover:bg-gray-50 transition-colors duration-200 text-gray-700"
+                >
+                  <Phone className="w-4 h-4 text-primary-600" />
+                  <span className="font-medium">0177 3225218</span>
+                </a>
+                <a
+                  href="tel:+4917662333406"
+                  className="flex items-center space-x-3 px-4 py-3 hover:bg-gray-50 transition-colors duration-200 text-gray-700"
+                >
+                  <Phone className="w-4 h-4 text-primary-600" />
+                  <span className="font-medium">0176 62333406</span>
+                </a>
+              </div>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -169,10 +204,15 @@ export default function Header() {
                 Impressum
               </Link>
             </nav>
-            <div className="mt-6 pt-6 border-t border-gray-200">
-              <div className="flex items-center space-x-2 text-sm text-dark-700 mb-2">
+            <div className="mt-6 pt-6 border-t border-gray-200 space-y-2">
+              <a href="tel:+491773225218" className="flex items-center space-x-2 text-sm text-dark-700 hover:text-primary-600 py-1">
                 <Phone className="w-4 h-4 text-primary-600" />
-              </div>
+                <span>0177 3225218</span>
+              </a>
+              <a href="tel:+4917662333406" className="flex items-center space-x-2 text-sm text-dark-700 hover:text-primary-600 py-1">
+                <Phone className="w-4 h-4 text-primary-600" />
+                <span>0176 62333406</span>
+              </a>
             </div>
           </div>
         )}

@@ -17,25 +17,25 @@ const contactInfo = [
     icon: Phone,
     title: 'Telefon',
     value: '0177 3225218',
-    subtitle: 'Mo-Fr: 8:00 - 18:00'
+    subtitle: 'Mo-Sa erreichbar'
   },
   {
     icon: Mail,
     title: 'E-Mail',
-    value: 'inf@kd-car.de',
+    value: 'info@kd-car.de',
     subtitle: 'Antwort innerhalb 24h'
   },
   {
     icon: MapPin,
     title: 'Adresse',
-    value: 'Tannenbergstraße 74, 46045 Oberhausen',
+    value: 'Mülheimer Str. 33, 46045 Oberhausen',
     subtitle: 'Deutschland'
   },
   {
     icon: Clock,
     title: 'Öffnungszeiten',
     value: 'Mo-Fr: 8:00 - 18:00',
-    subtitle: 'Sa: 9:00 - 14:00'
+    subtitle: 'Sa: 9:00 - 15:00'
   }
 ]
 
@@ -320,25 +320,33 @@ export default function ContactSection() {
                     <h4 className="text-lg font-semibold text-white mb-1">
                       {info.title}
                     </h4>
-                                                             {info.title === 'Adresse' ? (
-                      <a 
-                        href="https://www.google.com/maps/search/Tannenbergstraße+74,+46045+Oberhausen"
+                        {info.title === 'Adresse' ? (
+                      <a
+                        href="https://www.google.com/maps/search/Mülheimer+Str.+33,+46045+Oberhausen"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-blue-300 font-medium hover:text-blue-200 transition-colors duration-200 cursor-pointer"
+                        className="text-blue-300 font-medium hover:text-blue-200 transition-colors duration-200 cursor-pointer underline decoration-blue-400/30 hover:decoration-blue-300"
                       >
                         {info.value}
                       </a>
                     ) : info.title === 'Telefon' ? (
-                      <a 
-                        href="tel:+491773225218"
-                        className="text-blue-300 font-medium hover:text-blue-200 transition-colors duration-200 cursor-pointer"
-                      >
-                        {info.value}
-                      </a>
+                      <div className="flex flex-col gap-1">
+                        <a
+                          href="tel:+491773225218"
+                          className="text-blue-300 font-medium hover:text-blue-200 transition-colors duration-200 cursor-pointer"
+                        >
+                          0177 3225218
+                        </a>
+                        <a
+                          href="tel:+4917662333406"
+                          className="text-blue-300 font-medium hover:text-blue-200 transition-colors duration-200 cursor-pointer"
+                        >
+                          0176 62333406
+                        </a>
+                      </div>
                     ) : info.title === 'E-Mail' ? (
-                      <a 
-                        href="mailto:inf@kd-car.de"
+                      <a
+                        href="mailto:info@kd-car.de"
                         className="text-blue-300 font-medium hover:text-blue-200 transition-colors duration-200 cursor-pointer"
                       >
                         {info.value}
@@ -406,8 +414,8 @@ export default function ContactSection() {
                Hier finden Sie uns
              </h3>
              <div className="w-full h-96 rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-               <iframe 
-                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2484.7355033712197!2d6.860323877544537!3d51.48136911260347!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b8c02af57e1f43%3A0x2f4c34a6a65d1e4e!2sTannenbergstra%C3%9Fe%2074%2C%2046045%20Oberhausen!5e0!3m2!1sde!2sde!4v1756282469919!5m2!1sde!2sde" 
+               <iframe
+                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2484.5!2d6.8575!3d51.4785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b8c02a00000000%3A0x0!2sM%C3%BClheimer%20Str.%2033%2C%2046045%20Oberhausen!5e0!3m2!1sde!2sde"
                  width="100%" 
                  height="100%" 
                  style={{border:0}} 
