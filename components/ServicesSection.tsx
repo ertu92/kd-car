@@ -39,38 +39,38 @@ const services: Service[] = [
   {
     id: 1,
     title: 'AN- UND VERKAUF',
-    subtitle: 'Motor & ECU',
+    subtitle: 'Autohandel',
     description: 'Wir kaufen Ihr Auto an oder nehmen es in Zahlung für ein Neues.',
     icon: Zap,
     image: 'https://images.unsplash.com/photo-1563720223185-11003d516935?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     features: ['Schnelle Abwicklung', 'Garantie inklusive', 'Lieferung möglich'],
     price: 'ab €299',
-    detailedDescription: 'Unser Performance Tuning beginnt mit einer gründlichen Analyse Ihres Fahrzeugs. Wir verwenden modernste Diagnosegeräte und Software, um das volle Potenzial Ihres Motors freizusetzen.',
+    detailedDescription: 'Seriöser An- und Verkauf basiert auf Fakten: Deshalb durchläuft jedes Fahrzeug bei uns eine gründliche technische Analyse. Mit modernsten Diagnosegeräten ermitteln wir den exakten Zustand – das bedeutet für Sie: Faire Ankaufspreise und geprüfte Sicherheit beim Autokauf.',
     process: [
-      'Fahrzeuganalyse und Leistungsmessung',
-      'ECU-Programmierung und Optimierung',
-      'Einbau von Performance-Komponenten',
-      'Dyno-Test und Feinabstimmung',
-      'Qualitätskontrolle und Garantie'
+      'Kostenlose Fahrzeugbewertung',
+      'Technische Diagnose und Zustandsprüfung',
+      'Transparente Preisverhandlung',
+      'Unkomplizierte Abwicklung',
+      'Übergabe mit allen Dokumenten'
     ],
     benefits: [
-      'Bis zu 30% Leistungssteigerung',
-      'Verbesserte Beschleunigung',
-      'Optimierter Kraftstoffverbrauch',
-      'Professionelle Garantie'
+      'Faire und marktgerechte Preise',
+      'Geprüfte Gebrauchtfahrzeuge',
+      'Inzahlungnahme möglich',
+      'Schnelle und sichere Abwicklung'
     ],
     duration: '1-3 Tage',
-    warranty: '2 Jahre'
+    warranty: '1 Jahr'
   },
   {
     id: 2,
-    title: 'INSTANDSETZUNG',
+    title: 'UNFALLINSTANDSETZUNG',
     subtitle: 'Lackierung & Reparatur',
     description: 'Professionelle Fahrzeug-Instandsetzung mit modernsten Lackiertechniken und Smart Repair-Methoden für perfekte Ergebnisse.',
     icon: Palette,
     image: '/images/carwrap.jpg',
-    features: ['Lackieren', 'Smart Repair', 'Teilfolierung', 'Professionelle Aufbereitung'],
-    price: 'ab €899',
+    features: ['Lackieren', 'Smart Repair', 'Gutachten', 'Professionelle Aufbereitung'],
+    price: 'ab €150',
     detailedDescription: 'Wir verwenden ausschließlich hochwertige Lackmaterialien und moderne Smart Repair-Techniken. Jede Instandsetzung wird mit höchster Präzision und Sorgfalt ausgeführt.',
     process: [
       'Beratung und Schadensanalyse',
@@ -85,112 +85,112 @@ const services: Service[] = [
       'Professionelle Verarbeitung',
       'Langlebige Qualität'
     ],
-    duration: '3-7 Tage',
-    warranty: '3 Jahre'
+    duration: '2-3 Tage, bei größeren Arbeiten auch länger',
+    warranty: 'garantiert saubere Arbeit'
   },
   {
     id: 3,
-    title: 'BODY MODIFIKATIONEN',
-    subtitle: 'Aero & Styling',
-    description: 'Verbessern Sie das Aussehen Ihres Fahrzeugs mit individuellen Body-Kits, Spoiler und aerodynamischen Modifikationen.',
+    title: 'FAHRZEUGAUFBEREITUNG',
+    subtitle: 'Leasingrückläufer',
+    description: 'Professionelle Aufbereitung für Leasingrückläufer – damit Ihr Fahrzeug bei der Rückgabe keine unnötigen Kosten verursacht.',
     icon: Car,
     image: '/images/body.jpg',
-    features: ['Body-Kits', 'Spoiler', 'Seitenschweller', 'Individuelle Kühlergrills'],
-    price: 'ab €199',
-    detailedDescription: 'Unsere Body-Modifikationen verbinden Ästhetik mit Funktionalität. Jede Komponente wird individuell angepasst und perfekt integriert.',
+    features: ['Innen- & Außenreinigung', 'Kratzerentfernung', 'Polster- & Lederaufbereitung', 'Lackaufbereitung'],
+    price: 'ab €100',
+    detailedDescription: 'Bei der Leasingrückgabe zählt jedes Detail. Wir bereiten Ihr Fahrzeug so auf, dass es den strengen Prüfkriterien der Leasinggesellschaft standhält – und Sie teure Nachbelastungen vermeiden.',
     process: [
-      'Design-Beratung und Planung',
-      'Anpassung der Komponenten',
-      'Professioneller Einbau',
-      'Lackierung und Integration',
-      'Finale Qualitätsprüfung'
+      'Zustandsanalyse und Dokumentation',
+      'Professionelle Innen- und Außenreinigung',
+      'Kratzer- und Dellenbehebung',
+      'Polster-, Leder- und Kunststoffpflege',
+      'Endkontrolle nach Leasingstandards'
     ],
     benefits: [
-      'Einzigartiges Design',
-      'Verbesserte Aerodynamik',
-      'Professionelle Integration',
-      'Hochwertige Materialien'
+      'Vermeidung teurer Nachbelastungen',
+      'Fahrzeug wie im Originalzustand',
+      'Professionelle Dokumentation',
+      'Stressfreie Leasingrückgabe'
     ],
-    duration: '2-5 Tage',
-    warranty: '2 Jahre'
+    duration: '1-2 Tage',
+    warranty: 'garantiert saubere Arbeit'
   },
   {
     id: 4,
-    title: 'RAD- & REIFEN-UPGRADES',
-    subtitle: 'Leistung & Stil',
-    description: 'Upgraden Sie Ihre Räder und Reifen für bessere Leistung, Handling und atemberaubende Optik.',
+    title: 'BEULENDOKTOR',
+    subtitle: 'Dellenentfernung ohne Lackierung',
+    description: 'Professionelle Dellenentfernung ohne Nachlackieren – schnell, schonend und kostengünstig mit der PDR-Methode.',
     icon: Shield,
-    image: '/images/reifen.jpg',
-    features: ['Individuelle Räder', 'Performance-Reifen', 'Radausrichtung', 'TPMS-Systeme'],
-    price: 'ab €399',
-    detailedDescription: 'Wir bieten eine umfassende Auswahl an Rädern und Reifen, die perfekt auf Ihr Fahrzeug abgestimmt sind. Jede Montage erfolgt mit modernster Ausrüstung.',
+    image: 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    features: ['Ohne Nachlackieren', 'Hagelschäden', 'Parkdellen', 'Originallack bleibt erhalten'],
+    price: 'ab €30',
+    detailedDescription: 'Mit der bewährten PDR-Methode (Paintless Dent Repair) entfernen wir Dellen und Beulen, ohne den Originallack Ihres Fahrzeugs zu beschädigen. Das spart Zeit, Geld und erhält den Wert Ihres Autos.',
     process: [
-      'Beratung und Auswahl',
-      'Fahrzeugvermessung',
-      'Professionelle Montage',
-      'Achseinstellung',
-      'Testfahrt und Kontrolle'
+      'Begutachtung und Schadensanalyse',
+      'Zugang zur Delle von der Rückseite',
+      'Präzises Herausdrücken mit Spezialwerkzeug',
+      'Feinarbeit und Kontrolle der Oberfläche',
+      'Endkontrolle und Qualitätssicherung'
     ],
     benefits: [
-      'Verbesserte Fahrleistungen',
-      'Einzigartiges Design',
-      'Optimale Sicherheit',
-      'Professionelle Montage'
+      'Originallack bleibt erhalten',
+      'Deutlich günstiger als Neulackierung',
+      'Schnelle Bearbeitung',
+      'Werterhalt des Fahrzeugs'
     ],
-    duration: '1-2 Tage',
-    warranty: '2 Jahre'
+    duration: 'Je nach Umfang wenige Stunden bis 1 Tag',
+    warranty: 'garantiert saubere Arbeit'
   },
   {
     id: 5,
-    title: 'INNENRAUM-MODIFIKATIONEN',
-    subtitle: 'Luxus & Sport',
-    description: 'Verwandeln Sie Ihren Innenraum mit individueller Polsterung, Lenkrädern und Performance-Zubehör.',
+    title: 'FELGENREPARATUR',
+    subtitle: 'Ohne Drehen',
+    description: 'Professionelle Felgenreparatur ohne Abdrehen – Kratzer, Bordsteinschäden und Beschädigungen werden unsichtbar beseitigt.',
     icon: Sparkles,
-    image: '/images/interior.jpg',
-    features: ['Individuelle Polsterung', 'Sport-Lenkrad', 'Pedalsätze', 'Innenraum-Beleuchtung'],
-    price: 'ab €199',
-    detailedDescription: 'Verwandeln Sie Ihr Fahrzeug-Innenleben in eine Luxus-Oase. Wir verwenden nur die besten Materialien und achten auf jedes Detail.',
+    image: 'https://images.unsplash.com/photo-1769899107195-aae414826ced?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    features: ['Ohne Abdrehen', 'Kratzer & Bordsteinschäden', 'Farbaufbereitung', 'Alle Felgenarten'],
+    price: 'ab €99',
+    detailedDescription: 'Unsere Felgenreparatur kommt ohne Abdrehen aus – das schont Material und Struktur Ihrer Felgen. Kratzer, Bordsteinschäden und Farbabplatzer werden fachgerecht aufgearbeitet, sodass Ihre Felgen wieder wie neu aussehen.',
     process: [
-      'Design-Beratung',
-      'Materialauswahl',
-      'Professionelle Verarbeitung',
-      'Einbau und Integration',
-      'Finale Kontrolle'
+      'Schadensanalyse und Begutachtung',
+      'Reinigung und Vorbereitung der Felge',
+      'Professionelles Auffüllen und Glätten',
+      'Farbanpassung und Lackierung',
+      'Endkontrolle und Qualitätssicherung'
     ],
     benefits: [
-      'Luxuriöses Ambiente',
-      'Individuelles Design',
-      'Hochwertige Materialien',
-      'Perfekte Integration'
+      'Kein Abdrehen nötig',
+      'Originalstruktur bleibt erhalten',
+      'Schnelle Bearbeitung',
+      'Deutlich günstiger als Neuanschaffung'
     ],
-    duration: '2-4 Tage',
-    warranty: '2 Jahre'
+    duration: 'Wenige Stunden pro Felge',
+    warranty: 'garantiert saubere Arbeit'
   },
   {
     id: 6,
-    title: 'WARTUNG & REPARATUR',
-    subtitle: 'Professioneller Service',
-    description: 'Halten Sie Ihr getuntes Fahrzeug in perfektem Zustand mit unseren umfassenden Wartungs- und Reparaturservices.',
+    title: 'AUTOGLAS',
+    subtitle: 'Reparatur & Austausch',
+    description: 'Steinschlag, Risse oder kompletter Scheibentausch – wir reparieren und ersetzen Ihr Autoglas schnell und professionell.',
     icon: Wrench,
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    features: ['Regelmäßige Wartung', 'Leistungsprüfungen', 'Diagnose-Services', 'Qualitätssicherung'],
-    price: 'ab €89',
-    detailedDescription: 'Unser Wartungs- und Reparaturservice sorgt dafür, dass Ihr getuntes Fahrzeug immer in Top-Zustand bleibt. Wir verwenden nur Original- oder hochwertige Ersatzteile.',
+    image: 'https://images.unsplash.com/photo-1676848649653-5b61b670a35d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    features: ['Steinschlagreparatur', 'Scheibentausch', 'Alle Fahrzeugtypen', 'Versicherungsabwicklung'],
+    price: 'ab €150',
+    detailedDescription: 'Ob kleiner Steinschlag oder komplett beschädigte Windschutzscheibe – wir kümmern uns um die fachgerechte Reparatur oder den Austausch Ihres Autoglases. Auf Wunsch übernehmen wir auch die Abwicklung mit Ihrer Versicherung.',
     process: [
-      'Umfassende Fahrzeugdiagnose',
-      'Detaillierte Inspektion',
-      'Professionelle Wartung',
-      'Qualitätskontrolle',
-      'Testfahrt und Dokumentation'
+      'Schadensanalyse und Begutachtung',
+      'Prüfung ob Reparatur oder Austausch nötig',
+      'Professionelle Reparatur oder Einbau',
+      'Kalibrierung der Fahrassistenzsysteme',
+      'Endkontrolle und Qualitätssicherung'
     ],
     benefits: [
-      'Längere Lebensdauer',
-      'Optimale Leistung',
-      'Sicherheit gewährleistet',
-      'Wertstabilisierung'
+      'Schnelle Steinschlagreparatur',
+      'Originalglas oder gleichwertig',
+      'Versicherungsabwicklung möglich',
+      'Alle Marken und Modelle'
     ],
-    duration: '0.5-2 Tage',
-    warranty: '1 Jahr'
+    duration: 'Reparatur: ca. 30 Min. / Austausch: 2-3 Std.',
+    warranty: 'garantiert saubere Arbeit'
   }
 ]
 
@@ -227,13 +227,12 @@ export default function ServicesSection() {
             <span className="text-sm font-bold tracking-wider">UNSERE LEISTUNGEN</span>
           </motion.div>
           
-          <h2 className="text-5xl sm:text-6xl font-display font-black text-dark-900 mb-6">
-            PREMIUM <span className="bg-gradient-to-r from-blue-500 via-primary-500 to-blue-600 bg-clip-text text-transparent">FAHRZEUG-INSTANDSETZUNG</span>
+          <h2 className="text-5xl sm:text-6xl font-display font-black text-dark-900 mb-4">
+            Ihr Zentrum für <span className="bg-gradient-to-r from-blue-500 via-primary-500 to-blue-600 bg-clip-text text-transparent">Lack und Karosserie</span>
           </h2>
-          
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto font-light">
-            Verwandeln Sie Ihr Fahrzeug mit unserem umfassenden Angebot an professioneller Aufbereitung, Reparatur und Instandsetzung. 
-            Von Smart Repair bis hin zu atemberaubenden visuellen Transformationen - wir liefern Exzellenz in jedem Detail.
+
+          <p className="text-2xl sm:text-3xl font-display font-bold text-dark-900 mb-6">
+            UNSERE LEISTUNGEN
           </p>
         </motion.div>
 
@@ -246,7 +245,7 @@ export default function ServicesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="card group overflow-hidden"
+              className="card group overflow-hidden flex flex-col"
             >
               {/* Image */}
               <div className="relative h-48 overflow-hidden">
@@ -272,7 +271,7 @@ export default function ServicesSection() {
               </div>
 
               {/* Content */}
-              <div className="p-6">
+              <div className="p-6 flex flex-col flex-grow">
                 <div className="mb-3">
                   <span className="text-sm text-primary-600 font-medium">
                     {service.subtitle}
@@ -300,7 +299,8 @@ export default function ServicesSection() {
                 </div>
 
                 {/* CTA */}
-                <button 
+                <div className="mt-auto">
+                <button
                   onClick={() => openModal(service)}
                   className="w-full btn-outline group-hover:bg-primary-600 group-hover:text-white transition-all duration-300"
                 >
@@ -309,6 +309,7 @@ export default function ServicesSection() {
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                   </span>
                 </button>
+                </div>
               </div>
             </motion.div>
           ))}

@@ -50,10 +50,10 @@ export default function HeroSection() {
                  PREMIUM
                </span>
                <br />
-              <span className="text-white drop-shadow-2xl">AUTO-Instandsetzung</span>
+              <span className="text-white drop-shadow-2xl">Auto Lackierung,</span>
                <br />
                <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-gray-300 font-medium">
-                & Aufbereitung
+                Unfallinstandsetzung & Beulendoktor
                </span>
              </motion.h1>
 
@@ -64,7 +64,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-lg sm:text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed font-light px-4"
           >
-            Unfallinstandsetzung, Lackierung, Smart Repair, Aufbereitung, Felgenreparatur und Beulendoktor – wir machen Ihr Auto wieder wie neu.
+            Unfallinstandsetzung (nach Gutachten), Lackierung, Smart Repair, Fahrzeugaufbereitung (Leasingrückläufer), Beulendoktor ohne Nachlackieren, Felgenreperatur & Autoglas - wir bringen Ihr Fahrzeug zurück in Bestform und das alles aus einer Hand
           </motion.p>
 
           {/* CTA Buttons */}
@@ -96,7 +96,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-20 max-w-5xl mx-auto"
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-20 pb-12 max-w-5xl mx-auto"
           >
                          <div className="group flex flex-col items-center space-y-4 p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 transform hover:scale-105">
                <div className="w-16 h-16 bg-gradient-to-br from-blue-500/20 to-primary-500/20 rounded-2xl flex items-center justify-center group-hover:from-blue-500/30 group-hover:to-primary-500/30 transition-all duration-300">

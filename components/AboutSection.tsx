@@ -118,18 +118,19 @@ export default function AboutSection() {
               </motion.div>
               
               <h2 className="text-4xl sm:text-5xl font-display font-bold text-dark-900 mb-6">
-                Wir sind ein <span className="bg-gradient-to-r from-blue-500 via-primary-500 to-blue-600 bg-clip-text text-transparent">Autoaufbereiter</span> mit dem gewissen Extra
+                Ihr Fachbetrieb für <span className="bg-gradient-to-r from-blue-500 via-primary-500 to-blue-600 bg-clip-text text-transparent">Lack, Karosserie & Fahrzeugaufbereitung</span> in Oberhausen
               </h2>
-              
+
               <p className="text-xl text-gray-600 leading-relaxed mb-6">
-                <strong>Ihr Auto. Unser Handwerk. Ihre Zufriedenheit.</strong>
+                <strong>Ihr Fahrzeug. Unsere Expertise. Ihr Ergebnis.</strong>
               </p>
-              
+
               <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                Von der professionellen Fahrzeugaufbereitung über Smart Repair und Beulendoktor bis hin zu 
-                Folierung, Scheibentönung und Autoglas-Reparatur – wir bieten Ihnen das komplette 
-                Rundum-sorglos-Paket. Auch beim An- und Verkauf sowie der Inzahlungnahme sind wir Ihr 
-                zuverlässiger Partner – kompetent, transparent und mit einem Auge fürs Detail.
+                Von der professionellen Unfallinstandsetzung nach Gutachten über Lackierung, Smart Repair
+                und Beulendoktor ohne Nachlackieren bis hin zu Felgenreparatur und Autoglas-Reparatur –
+                bei KD-CAR bekommen Sie alles aus einer Hand. Wir bereiten auch Leasingrückläufer
+                fachgerecht auf und sind Ihr zuverlässiger Partner beim An- und Verkauf von Fahrzeugen –
+                kompetent, transparent und mit höchstem Qualitätsanspruch.
               </p>
             </div>
 

@@ -1,11 +1,16 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Poppins } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import CookieConsent from '@/components/CookieConsent'
 
 const inter = Inter({ subsets: ['latin'] })
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-poppins',
+})
 
 export const metadata: Metadata = {
   title: 'KD-CAR - Autoaufbereitung und mehr | Professionelle Fahrzeugaufbereitung',
@@ -29,7 +34,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="de">
-      <body className={inter.className}>
+      <body className={`${inter.className} ${poppins.variable}`}>
         <Header />
         <main>
           {children}
