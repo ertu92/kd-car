@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(powershell -Command \"Get-Process node | Select-Object Id, CommandLine\":*)",
+      "Bash(powershell -Command \"Get-Process | Where-Object { $_.Path -like ''*charming*'' } | Select-Object Id, Path\")",
+      "Bash(powershell:*)"
+    ]
+  }
+}
