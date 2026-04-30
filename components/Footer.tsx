@@ -42,8 +42,8 @@ export default function Footer() {
     <footer className="bg-dark-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
-        <div className="py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="py-12 sm:py-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Company Info */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -166,12 +166,12 @@ export default function Footer() {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="py-6 border-t border-gray-800"
         >
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0 text-center md:text-left">
             <div className="text-sm text-gray-400">
               © 2025 KD-CAR. Alle Rechte vorbehalten.
             </div>
-            
-            <div className="flex items-center space-x-6 text-sm text-gray-400">
+
+            <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 text-sm text-gray-400">
               <Link href="#" className="hover:text-primary-400 transition-colors duration-200">
                 Datenschutzerklärung
               </Link>
@@ -191,7 +191,8 @@ export default function Footer() {
         onClick={scrollToTop}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
-        className="fixed bottom-8 right-8 w-12 h-12 bg-primary-600 hover:bg-primary-700 text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-200 z-40"
+        aria-label="Nach oben scrollen"
+        className="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 w-11 h-11 sm:w-12 sm:h-12 bg-primary-600 hover:bg-primary-700 text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-200 z-40"
       >
         <ArrowUp className="w-5 h-5" />
       </motion.button>

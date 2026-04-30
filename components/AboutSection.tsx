@@ -38,7 +38,7 @@ const features = [
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-20 bg-white">
+    <section id="about" className="py-16 sm:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Team Section - Above Über uns */}
         <motion.div
@@ -59,12 +59,12 @@ export default function AboutSection() {
               <Users className="w-4 h-4" />
               <span className="text-sm font-medium">Unser Team</span>
             </motion.div>
-            <h2 className="text-3xl sm:text-4xl font-display font-bold text-dark-900">
+            <h2 className="text-2xl sm:text-4xl font-display font-bold text-dark-900 leading-tight">
               Die Köpfe hinter <span className="bg-gradient-to-r from-blue-500 via-primary-500 to-blue-600 bg-clip-text text-transparent">KD-CAR</span>
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 max-w-3xl mx-auto">
             {[
               { name: 'Hasan', image: '/hasan.jpg', role: 'Team Member' },
               { name: 'Ismet', image: '/ismet.jpg', role: 'Team Member' }
@@ -96,7 +96,7 @@ export default function AboutSection() {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left Column - Content */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -117,15 +117,15 @@ export default function AboutSection() {
                 <span className="text-sm font-medium">Über uns</span>
               </motion.div>
               
-              <h2 className="text-4xl sm:text-5xl font-display font-bold text-dark-900 mb-6">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-dark-900 mb-6 leading-tight">
                 Ihr Fachbetrieb für <span className="bg-gradient-to-r from-blue-500 via-primary-500 to-blue-600 bg-clip-text text-transparent">Lack, Karosserie & Fahrzeugaufbereitung</span> in Oberhausen
               </h2>
 
-              <p className="text-xl text-gray-600 leading-relaxed mb-6">
+              <p className="text-lg sm:text-xl text-gray-600 leading-relaxed mb-6">
                 <strong>Ihr Fahrzeug. Unsere Expertise. Ihr Ergebnis.</strong>
               </p>
 
-              <p className="text-lg text-gray-600 leading-relaxed mb-8">
+              <p className="text-base sm:text-lg text-gray-600 leading-relaxed mb-8">
                 Von der professionellen Unfallinstandsetzung nach Gutachten über Lackierung, Smart Repair
                 und Beulendoktor ohne Nachlackieren bis hin zu Felgenreparatur und Autoglas-Reparatur –
                 bei KD-CAR bekommen Sie alles aus einer Hand. Wir bereiten auch Leasingrückläufer
@@ -171,7 +171,7 @@ export default function AboutSection() {
             className="space-y-8"
           >
             {/* Stats Grid */}
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-4 sm:gap-6">
               {stats.map((stat, index) => (
                 <motion.div
                   key={index}
@@ -179,15 +179,15 @@ export default function AboutSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-                  className="text-center p-6 bg-gradient-to-br from-gray-50 to-white rounded-xl border border-gray-100"
+                  className="text-center p-4 sm:p-6 bg-gradient-to-br from-gray-50 to-white rounded-xl border border-gray-100"
                 >
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <stat.icon className="w-6 h-6 text-blue-600" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                    <stat.icon className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />
                   </div>
-                  <div className="text-3xl font-bold text-dark-900 mb-2">
+                  <div className="text-2xl sm:text-3xl font-bold text-dark-900 mb-1 sm:mb-2">
                     {stat.value}
                   </div>
-                  <div className="text-sm text-gray-600 font-medium">
+                  <div className="text-xs sm:text-sm text-gray-600 font-medium">
                     {stat.label}
                   </div>
                 </motion.div>
@@ -205,15 +205,15 @@ export default function AboutSection() {
               <img
                 src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                 alt="KD-CAR Team bei der Arbeit"
-                className="w-full h-80 object-cover rounded-2xl shadow-2xl"
+                className="w-full h-64 sm:h-80 object-cover rounded-2xl shadow-2xl"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-dark-900/40 to-transparent rounded-2xl" />
-              
+
               {/* Floating Badge */}
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-4 -right-4 bg-white rounded-xl shadow-xl p-4"
+                className="absolute bottom-3 right-3 sm:-bottom-4 sm:-right-4 bg-white rounded-xl shadow-xl p-3 sm:p-4"
               >
                 <div className="flex items-center space-x-2">
                   <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
@@ -234,11 +234,11 @@ export default function AboutSection() {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="mt-20 text-center"
         >
-          <div className="bg-gradient-to-r from-blue-50 to-primary-50 rounded-2xl p-8 border border-blue-100">
-            <h3 className="text-2xl font-display font-bold text-dark-900 mb-4">
+          <div className="bg-gradient-to-r from-blue-50 to-primary-50 rounded-2xl p-6 sm:p-8 border border-blue-100">
+            <h3 className="text-xl sm:text-2xl font-display font-bold text-dark-900 mb-4">
               Warum KD-CAR wählen?
             </h3>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-6">
+            <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto mb-6">
               Wir kombinieren jahrelange Erfahrung mit modernster Technik und höchster Qualität. 
               Ihr Fahrzeug verdient die beste Behandlung - und das bekommen Sie bei uns.
             </p>

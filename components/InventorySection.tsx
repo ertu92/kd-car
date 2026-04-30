@@ -120,10 +120,10 @@ export default function InventorySection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl md:text-5xl font-display font-bold text-dark-900 mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-dark-900 mb-4 leading-tight">
             Unser <span className="bg-gradient-to-r from-blue-500 via-primary-500 to-blue-600 bg-clip-text text-transparent">Fahrzeugbestand</span>
           </h1>
-          <p className="text-xl text-dark-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-xl text-dark-600 max-w-3xl mx-auto">
             Entdecken Sie unsere exklusive Sammlung von Premium-Fahrzeugen. 
             Jedes Auto wird sorgfältig ausgewählt und in höchster Qualität präsentiert.
           </p>
@@ -134,9 +134,9 @@ export default function InventorySection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="bg-white rounded-2xl shadow-lg p-6 mb-8"
+          className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 mb-8"
         >
-          <div className="flex flex-col lg:flex-row gap-4 items-center">
+          <div className="flex flex-col lg:flex-row gap-3 sm:gap-4 items-stretch lg:items-center">
             {/* Search */}
             <div className="relative flex-1 w-full">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-dark-400 w-5 h-5" />
@@ -145,16 +145,16 @@ export default function InventorySection() {
                 placeholder="Fahrzeug suchen..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300 text-base"
               />
             </div>
 
             {/* Filters */}
-            <div className="flex flex-wrap gap-4">
+            <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-3 sm:gap-4 w-full lg:w-auto">
               <select
                 value={filterMake}
                 onChange={(e) => setFilterMake(e.target.value)}
-                className="px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                className="w-full sm:w-auto px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300 text-base bg-white"
               >
                 <option value="all">Alle Marken</option>
                 {uniqueMakes.map((make) => (
@@ -167,7 +167,7 @@ export default function InventorySection() {
               <select
                 value={filterYear}
                 onChange={(e) => setFilterYear(e.target.value)}
-                className="px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                className="w-full sm:w-auto px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300 text-base bg-white"
               >
                 <option value="all">Alle Jahre</option>
                 {uniqueYears.map((year) => (

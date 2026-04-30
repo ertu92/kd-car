@@ -206,7 +206,7 @@ export default function ServicesSection() {
   }
 
   return (
-    <section id="services" className="py-20 bg-gradient-to-br from-gray-50 to-white">
+    <section id="services" className="py-16 sm:py-20 bg-gradient-to-br from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -227,17 +227,17 @@ export default function ServicesSection() {
             <span className="text-sm font-bold tracking-wider">UNSERE LEISTUNGEN</span>
           </motion.div>
           
-          <h2 className="text-5xl sm:text-6xl font-display font-black text-dark-900 mb-4">
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-display font-black text-dark-900 mb-4 leading-tight">
             Ihr Zentrum für <span className="bg-gradient-to-r from-blue-500 via-primary-500 to-blue-600 bg-clip-text text-transparent">Lack und Karosserie</span>
           </h2>
 
-          <p className="text-2xl sm:text-3xl font-display font-bold text-dark-900 mb-6">
+          <p className="text-xl sm:text-3xl font-display font-bold text-dark-900 mb-6">
             UNSERE LEISTUNGEN
           </p>
         </motion.div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {services.map((service, index) => (
             <motion.div
               key={service.id}
@@ -323,11 +323,11 @@ export default function ServicesSection() {
            transition={{ duration: 0.8, delay: 0.4 }}
            className="text-center mt-16"
          >
-           <div className="bg-gradient-to-r from-blue-600 to-primary-600 rounded-2xl p-8 text-white">
-             <h3 className="text-2xl font-display font-bold mb-4">
+           <div className="bg-gradient-to-r from-blue-600 to-primary-600 rounded-2xl p-6 sm:p-8 text-white">
+             <h3 className="text-xl sm:text-2xl font-display font-bold mb-4">
                Ihre Kreativität. Unsere Umsetzung.
              </h3>
-             <p className="text-lg text-white/90 mb-6 max-w-2xl mx-auto">
+             <p className="text-base sm:text-lg text-white/90 mb-6 max-w-2xl mx-auto">
                Haben Sie eine spezielle Anfrage oder möchten Sie Ihr Fahrzeug individuell gestalten? 
                Kontaktieren Sie uns für ein persönliches Beratungsgespräch!
              </p>
@@ -364,26 +364,26 @@ export default function ServicesSection() {
                 onClick={(e) => e.stopPropagation()}
               >
                 {/* Modal Header */}
-                <div className="relative p-8 border-b border-gray-200">
+                <div className="relative p-5 sm:p-8 border-b border-gray-200">
                   <button
                     onClick={closeModal}
-                    className="absolute top-6 right-6 w-8 h-8 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors duration-200"
+                    className="absolute top-4 right-4 sm:top-6 sm:right-6 w-9 h-9 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors duration-200"
                   >
                     <X className="w-5 h-5 text-gray-600" />
                   </button>
-                  
-                  <div className="flex items-start space-x-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-primary-100 rounded-2xl flex items-center justify-center">
-                      <selectedService.icon className="w-8 h-8 text-blue-600" />
+
+                  <div className="flex items-start space-x-3 sm:space-x-4 pr-12 sm:pr-14">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-blue-100 to-primary-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+                      <selectedService.icon className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600" />
                     </div>
-                    <div className="flex-1">
+                    <div className="flex-1 min-w-0">
                       <span className="text-sm text-blue-600 font-medium">
                         {selectedService.subtitle}
                       </span>
-                      <h2 className="text-3xl font-display font-bold text-gray-900 mt-2">
+                      <h2 className="text-xl sm:text-3xl font-display font-bold text-gray-900 mt-2 break-words">
                         {selectedService.title}
                       </h2>
-                      <p className="text-lg text-gray-600 mt-3">
+                      <p className="text-base sm:text-lg text-gray-600 mt-3">
                         {selectedService.detailedDescription}
                       </p>
                     </div>
@@ -391,7 +391,7 @@ export default function ServicesSection() {
                 </div>
 
                 {/* Modal Content */}
-                <div className="p-8 space-y-8">
+                <div className="p-5 sm:p-8 space-y-6 sm:space-y-8">
                   {/* Process */}
                   <div>
                     <h3 className="text-xl font-display font-bold text-gray-900 mb-4 flex items-center space-x-2">

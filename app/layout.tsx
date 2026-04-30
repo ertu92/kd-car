@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter, Poppins } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
@@ -11,6 +11,14 @@ const poppins = Poppins({
   weight: ['400', '500', '600', '700', '800'],
   variable: '--font-poppins',
 })
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: 'cover',
+  themeColor: '#0ea5e9',
+}
 
 export const metadata: Metadata = {
   title: 'KD-CAR - Autoaufbereitung und mehr | Professionelle Fahrzeugaufbereitung',
@@ -33,8 +41,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="de">
-      <body className={`${inter.className} ${poppins.variable}`}>
+    <html lang="de" className="overflow-x-clip">
+      <body className={`${inter.className} ${poppins.variable} overflow-x-clip`}>
         <Header />
         <main>
           {children}

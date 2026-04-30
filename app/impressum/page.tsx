@@ -11,23 +11,23 @@ export default function ImpressumPage() {
     <div className="min-h-screen bg-gray-50">
       {/* Header Section */}
       <div className="bg-gradient-to-r from-blue-600 to-primary-600 text-white pt-10">
-        <div className="max-w-4xl mx-auto px-4 py-16">
-          <h1 className="text-4xl font-bold mb-4">Impressum</h1>
-          <p className="text-xl text-white/90">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+          <h1 className="text-3xl sm:text-4xl font-bold mb-4">Impressum</h1>
+          <p className="text-base sm:text-xl text-white/90">
             Rechtliche Informationen und Angaben gemäß § 5 TMG
           </p>
         </div>
       </div>
 
       {/* Content Section */}
-      <div className="max-w-4xl mx-auto px-4 py-12">
-        <div className="bg-white rounded-lg shadow-lg p-8 space-y-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+        <div className="bg-white rounded-lg shadow-lg p-5 sm:p-8 space-y-8">
           
           {/* Company Information */}
           <section>
             <div className="flex items-center space-x-3 mb-6">
               <Building className="w-6 h-6 text-blue-600" />
-              <h2 className="text-2xl font-bold text-gray-900">Angaben gemäß § 5 TMG</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 leading-snug">Angaben gemäß § 5 TMG</h2>
             </div>
             <div className="space-y-4 text-gray-700">
               <div>
@@ -44,7 +44,7 @@ export default function ImpressumPage() {
           <section>
             <div className="flex items-center space-x-3 mb-6">
               <Phone className="w-6 h-6 text-blue-600" />
-              <h2 className="text-2xl font-bold text-gray-900">Kontakt</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 leading-snug">Kontakt</h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-3">
@@ -85,7 +85,7 @@ export default function ImpressumPage() {
           <section>
             <div className="flex items-center space-x-3 mb-6">
               <Shield className="w-6 h-6 text-blue-600" />
-              <h2 className="text-2xl font-bold text-gray-900">Berufsbezeichnung und berufsrechtliche Regelungen</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 leading-snug">Berufsbezeichnung und berufsrechtliche Regelungen</h2>
             </div>
             <div className="space-y-4 text-gray-700">
               <p>
@@ -107,7 +107,7 @@ export default function ImpressumPage() {
           <section>
             <div className="flex items-center space-x-3 mb-6">
               <Shield className="w-6 h-6 text-blue-600" />
-              <h2 className="text-2xl font-bold text-gray-900">EU-Streitschlichtung</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 leading-snug">EU-Streitschlichtung</h2>
             </div>
             <div className="space-y-4 text-gray-700">
               <p>
@@ -131,7 +131,7 @@ export default function ImpressumPage() {
           <section>
             <div className="flex items-center space-x-3 mb-6">
               <Shield className="w-6 h-6 text-blue-600" />
-              <h2 className="text-2xl font-bold text-gray-900">Verbraucherstreitbeilegung/Universalschlichtungsstelle</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 leading-snug">Verbraucherstreitbeilegung/Universalschlichtungsstelle</h2>
             </div>
             <div className="space-y-4 text-gray-700">
               <p>
@@ -145,7 +145,7 @@ export default function ImpressumPage() {
           <section>
             <div className="flex items-center space-x-3 mb-6">
               <Shield className="w-6 h-6 text-blue-600" />
-              <h2 className="text-2xl font-bold text-gray-900">Haftung für Inhalte</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 leading-snug">Haftung für Inhalte</h2>
             </div>
             <div className="space-y-4 text-gray-700">
               <p>
@@ -167,7 +167,7 @@ export default function ImpressumPage() {
           <section>
             <div className="flex items-center space-x-3 mb-6">
               <FileText className="w-6 h-6 text-primary-600" />
-              <h2 className="text-2xl font-bold text-gray-900">Urheberrecht</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 leading-snug">Urheberrecht</h2>
             </div>
             <div className="space-y-4 text-gray-700">
               <p>

@@ -112,7 +112,7 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-dark-900 to-dark-800 text-white">
+    <section id="contact" className="py-16 sm:py-20 bg-gradient-to-br from-dark-900 to-dark-800 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -133,26 +133,26 @@ export default function ContactSection() {
             <span className="text-sm font-medium">Kontakt</span>
           </motion.div>
           
-                     <h2 className="text-4xl sm:text-5xl font-display font-bold mb-6">
+                     <h2 className="text-3xl sm:text-5xl font-display font-bold mb-6 leading-tight">
              <span className="bg-gradient-to-r from-blue-500 via-primary-500 to-blue-600 bg-clip-text text-transparent">Kontaktieren</span> Sie uns
            </h2>
-          
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+
+          <p className="text-base sm:text-xl text-gray-300 max-w-3xl mx-auto">
             Machen Sie jetzt einen Termin mit uns aus! Wir freuen uns darauf, 
             Ihr Fahrzeug professionell aufzubereiten.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="bg-white/5 backdrop-blur-custom rounded-2xl p-8 border border-white/10"
+            className="bg-white/5 backdrop-blur-custom rounded-2xl p-5 sm:p-8 border border-white/10"
           >
-            <h3 className="text-2xl font-display font-bold mb-6">
+            <h3 className="text-xl sm:text-2xl font-display font-bold mb-6">
               Termin vereinbaren
             </h3>
             
@@ -169,7 +169,7 @@ export default function ContactSection() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-base"
                     placeholder="Ihr vollständiger Name"
                   />
                 </div>
@@ -185,7 +185,7 @@ export default function ContactSection() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-base"
                     placeholder="ihre.email@beispiel.de"
                   />
                 </div>
@@ -202,7 +202,7 @@ export default function ContactSection() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-base"
                     placeholder="+49 123 456 789"
                   />
                 </div>
@@ -216,7 +216,7 @@ export default function ContactSection() {
                      name="service"
                      value={formData.service}
                      onChange={handleChange}
-                     className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                     className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent text-base"
                    >
                      <option value="" className="text-gray-900">Bitte wählen Sie eine Leistung</option>
                      <option value="performance-tuning" className="text-gray-900">Performance Tuning - Motor & ECU</option>
@@ -290,13 +290,13 @@ export default function ContactSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="space-y-8"
+            className="space-y-6 sm:space-y-8"
           >
             <div>
-              <h3 className="text-2xl font-display font-bold mb-6">
+              <h3 className="text-xl sm:text-2xl font-display font-bold mb-6">
                 Kontaktinformationen
               </h3>
-              <p className="text-lg text-gray-300 leading-relaxed mb-8">
+              <p className="text-base sm:text-lg text-gray-300 leading-relaxed mb-8">
                 Wir sind für Sie da und freuen uns darauf, Ihr Fahrzeug professionell 
                 aufzubereiten. Kontaktieren Sie uns für ein unverbindliches Beratungsgespräch.
               </p>
@@ -316,7 +316,7 @@ export default function ContactSection() {
                                      <div className="flex-shrink-0 w-12 h-12 bg-blue-600/20 rounded-lg flex items-center justify-center">
                      <info.icon className="w-6 h-6 text-blue-400" />
                    </div>
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <h4 className="text-lg font-semibold text-white mb-1">
                       {info.title}
                     </h4>
@@ -410,10 +410,10 @@ export default function ContactSection() {
              transition={{ duration: 0.6, delay: 1.2 }}
              className="mt-12"
            >
-             <h3 className="text-2xl font-display font-bold mb-6 text-center">
+             <h3 className="text-xl sm:text-2xl font-display font-bold mb-6 text-center">
                Hier finden Sie uns
              </h3>
-             <div className="w-full h-96 rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+             <div className="w-full h-72 sm:h-96 rounded-2xl overflow-hidden shadow-2xl border border-white/10">
                <iframe
                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2484.5!2d6.8575!3d51.4785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b8c02a00000000%3A0x0!2sM%C3%BClheimer%20Str.%2033%2C%2046045%20Oberhausen!5e0!3m2!1sde!2sde"
                  width="100%" 

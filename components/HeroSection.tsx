@@ -30,7 +30,7 @@ export default function HeroSection() {
        </div>
 
             {/* Content */}
-      <div className="relative z-10 text-center text-white px-8 sm:px-12 lg:px-16 max-w-4xl mx-auto">
+      <div className="relative z-10 text-center text-white px-4 sm:px-12 lg:px-16 max-w-4xl mx-auto w-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -44,7 +44,7 @@ export default function HeroSection() {
                initial={{ opacity: 0, y: 30 }}
                animate={{ opacity: 1, y: 0 }}
                transition={{ duration: 0.8, delay: 0.3 }}
-               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-black leading-tight"
+               className="text-[2rem] leading-[1.1] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-black"
              >
                <span className="bg-gradient-to-r from-blue-500 via-primary-500 to-blue-600 bg-clip-text text-transparent">
                  PREMIUM
@@ -52,7 +52,7 @@ export default function HeroSection() {
                <br />
               <span className="text-white drop-shadow-2xl">Auto Lackierung,</span>
                <br />
-               <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-gray-300 font-medium">
+               <span className="block mt-2 sm:mt-3 text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-gray-300 font-medium leading-snug">
                 Unfallinstandsetzung & Beulendoktor
                </span>
              </motion.h1>
@@ -62,7 +62,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg sm:text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed font-light px-4"
+            className="text-base sm:text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed font-light"
           >
             Unfallinstandsetzung (nach Gutachten), Lackierung, Smart Repair, Fahrzeugaufbereitung (Leasingrückläufer), Beulendoktor ohne Nachlackieren, Felgenreperatur & Autoglas - wir bringen Ihr Fahrzeug zurück in Bestform und das alles aus einer Hand
           </motion.p>
@@ -96,7 +96,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-20 pb-12 max-w-5xl mx-auto"
+            className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8 pt-12 sm:pt-20 pb-12 max-w-5xl mx-auto"
           >
                          <div className="group flex flex-col items-center space-y-4 p-6 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 transform hover:scale-105">
                <div className="w-16 h-16 bg-gradient-to-br from-blue-500/20 to-primary-500/20 rounded-2xl flex items-center justify-center group-hover:from-blue-500/30 group-hover:to-primary-500/30 transition-all duration-300">
@@ -144,12 +144,12 @@ export default function HeroSection() {
         <motion.div
           animate={{ y: [0, -20, 0] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-20 right-10 w-32 h-32 bg-gradient-to-br from-blue-500/20 to-primary-500/20 rounded-full blur-3xl"
+          className="pointer-events-none absolute top-20 right-4 sm:right-10 w-20 h-20 sm:w-32 sm:h-32 bg-gradient-to-br from-blue-500/20 to-primary-500/20 rounded-full blur-3xl"
         />
         <motion.div
           animate={{ y: [0, 20, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-20 left-10 w-40 h-40 bg-gradient-to-br from-primary-500/20 to-blue-500/20 rounded-full blur-3xl"
+          className="pointer-events-none absolute bottom-20 left-4 sm:left-10 w-24 h-24 sm:w-40 sm:h-40 bg-gradient-to-br from-primary-500/20 to-blue-500/20 rounded-full blur-3xl"
         />
     </section>
   )

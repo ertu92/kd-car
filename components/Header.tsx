@@ -53,17 +53,17 @@ export default function Header() {
         : 'bg-black/80 backdrop-blur-custom'
     }`} style={{ position: 'fixed', zIndex: 9999 }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
+        <div className="flex justify-between items-center py-3 sm:py-4 gap-3">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3">
-            <div className="w-12 h-12 rounded-lg overflow-hidden shadow-lg">
-              <img 
-                src="/logo/logo.jpg" 
-                alt="KD-CAR Logo" 
+          <Link href="/" className="flex items-center space-x-2 sm:space-x-3 min-w-0">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg overflow-hidden shadow-lg flex-shrink-0">
+              <img
+                src="/logo/logo.jpg"
+                alt="KD-CAR Logo"
                 className="w-full h-full object-cover"
               />
             </div>
-            <span className={`font-display font-bold text-2xl ${
+            <span className={`font-display font-bold text-xl sm:text-2xl truncate ${
               isScrolled ? 'text-dark-900' : 'text-white'
             }`}>
               KD-CAR
