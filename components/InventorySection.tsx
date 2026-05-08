@@ -4,7 +4,6 @@ import { useState, useEffect, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { Search, Grid, List } from 'lucide-react'
 import CarCard from './CarCard'
-import CarDetailModal from './CarDetailModal'
 import type { InventoryCar, DataSource } from '@/lib/carms'
 
 type ViewMode = 'grid' | 'list'
@@ -17,7 +16,6 @@ type CarsResponse = {
 
 export default function InventorySection() {
   const [cars, setCars] = useState<InventoryCar[]>([])
-  const [selectedCar, setSelectedCar] = useState<InventoryCar | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
   const [viewMode, setViewMode] = useState<ViewMode>('grid')
   const [filterYear, setFilterYear] = useState('all')
@@ -250,9 +248,9 @@ export default function InventorySection() {
               key={car.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: Math.min(index * 0.05, 0.4) }}
             >
-              <CarCard car={car} viewMode={viewMode} onClick={() => setSelectedCar(car)} />
+              <CarCard car={car} viewMode={viewMode} />
             </motion.div>
           ))}
         </motion.div>
@@ -273,9 +271,6 @@ export default function InventorySection() {
           </motion.div>
         )}
       </div>
-
-      {/* Car Detail Modal */}
-      {selectedCar && <CarDetailModal car={selectedCar} onClose={() => setSelectedCar(null)} />}
     </section>
   )
 }

@@ -24,6 +24,46 @@ export interface InventoryCar {
   fuelType?: string;
   vehicleType?: string;
   url?: string;
+
+  // mobile.de-derived extras (all optional — fallback data may not have them)
+  modelDescription?: string;
+  category?: string;
+  condition?: string;
+  usageType?: string;
+  firstRegistration?: string; // ISO date
+  cubicCapacity?: number;
+  cylinders?: number;
+  doors?: string;
+  seats?: number;
+  vin?: string;
+  prevOwners?: number;
+  accidentFree?: boolean;
+  damageUnrepaired?: boolean;
+  roadworthy?: boolean;
+  hu?: string;
+  warranty?: boolean;
+  warrantyMonths?: number;
+  interiorType?: string;
+  metallic?: boolean;
+  emissionClass?: string;
+  emissionSticker?: string;
+  co2Emission?: number;
+  energyEfficiencyClass?: string;
+  consumptionCombined?: number;
+  consumptionUrban?: number;
+  consumptionExtraUrban?: number;
+  consumptionUnit?: string;
+  electricRange?: number;
+  batteryCapacity?: number;
+  climatisation?: string;
+  parkAssists?: string;
+  airbags?: string;
+  trailerCoupling?: string;
+  netPrice?: number;
+  priceCurrency?: string;
+  priceType?: string;
+  externalSource?: string;
+  externalUrl?: string;
 }
 
 export type InventoryFilters = Partial<{
@@ -77,6 +117,45 @@ type RawCar = {
   horsepower?: string;
   exteriorColor?: string;
   interiorColor?: string;
+
+  // mobile.de extras
+  modelDescription?: string | null;
+  category?: string | null;
+  condition?: string | null;
+  usageType?: string | null;
+  cubicCapacity?: number | string | null;
+  cylinders?: number | string | null;
+  doors?: string | null;
+  seats?: number | string | null;
+  vin?: string | null;
+  prevOwners?: number | string | null;
+  accidentFree?: boolean | null;
+  damageUnrepaired?: boolean | null;
+  roadworthy?: boolean | null;
+  hu?: string | null;
+  warranty?: boolean | null;
+  warrantyMonths?: number | null;
+  interiorType?: string | null;
+  metallic?: boolean | null;
+  emissionClass?: string | null;
+  emissionSticker?: string | null;
+  co2Emission?: number | string | null;
+  energyEfficiencyClass?: string | null;
+  consumptionCombined?: number | string | null;
+  consumptionUrban?: number | string | null;
+  consumptionExtraUrban?: number | string | null;
+  consumptionUnit?: string | null;
+  electricRange?: number | string | null;
+  batteryCapacity?: number | string | null;
+  climatisation?: string | null;
+  parkAssists?: string | null;
+  airbags?: string | null;
+  trailerCoupling?: string | null;
+  netPrice?: number | string | null;
+  priceCurrency?: string | null;
+  priceType?: string | null;
+  externalSource?: string | null;
+  externalUrl?: string | null;
 };
 
 type CarmsListResponse = {
@@ -337,7 +416,70 @@ function normalizeCar(raw: RawCar, baseUrl?: string): InventoryCar {
     fuelType: raw.fuelType || undefined,
     vehicleType: raw.vehicleType || undefined,
     url: raw.url || undefined,
+
+    // mobile.de extras (all optional, undefined if missing)
+    modelDescription: optionalString(raw.modelDescription),
+    category: optionalString(raw.category),
+    condition: optionalString(raw.condition),
+    usageType: optionalString(raw.usageType),
+    firstRegistration: optionalString(raw.firstRegistration),
+    cubicCapacity: optionalNumber(raw.cubicCapacity),
+    cylinders: optionalNumber(raw.cylinders),
+    doors: optionalString(raw.doors),
+    seats: optionalNumber(raw.seats),
+    vin: optionalString(raw.vin),
+    prevOwners: optionalNumber(raw.prevOwners),
+    accidentFree: optionalBool(raw.accidentFree),
+    damageUnrepaired: optionalBool(raw.damageUnrepaired),
+    roadworthy: optionalBool(raw.roadworthy),
+    hu: optionalString(raw.hu),
+    warranty: optionalBool(raw.warranty),
+    warrantyMonths: optionalNumber(raw.warrantyMonths),
+    interiorType: optionalString(raw.interiorType),
+    metallic: optionalBool(raw.metallic),
+    emissionClass: optionalString(raw.emissionClass),
+    emissionSticker: optionalString(raw.emissionSticker),
+    co2Emission: optionalNumber(raw.co2Emission),
+    energyEfficiencyClass: optionalString(raw.energyEfficiencyClass),
+    consumptionCombined: optionalNumber(raw.consumptionCombined),
+    consumptionUrban: optionalNumber(raw.consumptionUrban),
+    consumptionExtraUrban: optionalNumber(raw.consumptionExtraUrban),
+    consumptionUnit: optionalString(raw.consumptionUnit),
+    electricRange: optionalNumber(raw.electricRange),
+    batteryCapacity: optionalNumber(raw.batteryCapacity),
+    climatisation: optionalString(raw.climatisation),
+    parkAssists: optionalString(raw.parkAssists),
+    airbags: optionalString(raw.airbags),
+    trailerCoupling: optionalString(raw.trailerCoupling),
+    netPrice: optionalNumber(raw.netPrice),
+    priceCurrency: optionalString(raw.priceCurrency),
+    priceType: optionalString(raw.priceType),
+    externalSource: optionalString(raw.externalSource),
+    externalUrl: optionalString(raw.externalUrl),
   };
+}
+
+function optionalString(value: string | null | undefined): string | undefined {
+  if (typeof value !== "string") return undefined;
+  const trimmed = value.trim();
+  return trimmed.length > 0 ? trimmed : undefined;
+}
+
+function optionalNumber(
+  value: number | string | null | undefined
+): number | undefined {
+  if (typeof value === "number" && Number.isFinite(value)) return value;
+  if (typeof value === "string") {
+    const cleaned = value.replace(/[^\d.,-]/g, "").replace(",", ".");
+    const numeric = Number.parseFloat(cleaned);
+    if (Number.isFinite(numeric)) return numeric;
+  }
+  return undefined;
+}
+
+function optionalBool(value: boolean | null | undefined): boolean | undefined {
+  if (typeof value !== "boolean") return undefined;
+  return value;
 }
 
 function toSlug(raw: RawCar): string {
