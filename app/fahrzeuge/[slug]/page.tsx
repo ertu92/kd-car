@@ -22,8 +22,6 @@ import {
   ExternalLink,
   ScrollText,
 } from 'lucide-react'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
 import CarGallery from '@/components/CarGallery'
 import CarSpecsGrid from '@/components/CarSpecsGrid'
 import CarPriceCard from '@/components/CarPriceCard'
@@ -235,10 +233,8 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
   )
 
   return (
-    <>
-      <Header />
-      <main className="bg-gray-50 pb-16 pt-24 sm:pt-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div className="bg-gray-50 pb-16 pt-24 sm:pt-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {/* Breadcrumb */}
           <nav className="mb-4 flex items-center gap-1 text-sm text-dark-500">
             <Link href="/" className="hover:text-primary-600">
@@ -392,9 +388,7 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
             />
           </div>
         </div>
-      </main>
-      <Footer />
-    </>
+    </div>
   )
 }
 
