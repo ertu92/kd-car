@@ -76,6 +76,18 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
     notFound()
   }
 
+  const isKundenauftrag = [
+    car.description,
+    car.modelDescription,
+    car.title,
+    car.priceType,
+    ...car.features,
+  ]
+    .filter((value): value is string => typeof value === 'string')
+    .some((value) => /kundenauftrag/i.test(value))
+
+  const showWarranty = car.warranty === true && !isKundenauftrag
+
   const ezDate = formatDateMonthYear(car.firstRegistration) ?? String(car.year)
   const huDate = formatDateMonthYear(car.hu)
 
@@ -140,11 +152,12 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
       label: 'Fahrbereit',
       value: car.roadworthy ? 'Ja' : 'Nein',
     },
-    car.warranty != null && {
-      icon: ShieldCheck,
-      label: 'Gewährleistung',
-      value: car.warrantyMonths ? `${car.warrantyMonths} Monate` : car.warranty ? 'Ja' : 'Nein',
-    },
+    car.warranty != null &&
+      !isKundenauftrag && {
+        icon: ShieldCheck,
+        label: 'Gewährleistung',
+        value: car.warrantyMonths ? `${car.warrantyMonths} Monate` : car.warranty ? 'Ja' : 'Nein',
+      },
   ])
 
   const energySpecs = filterEmpty([
@@ -264,7 +277,7 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
               {car.condition ? <Badge>{humanLabel(car.condition) ?? car.condition}</Badge> : null}
               {car.firstRegistration ? <Badge tone="muted">EZ {ezDate}</Badge> : null}
               {car.accidentFree === true ? <Badge tone="success">Unfallfrei</Badge> : null}
-              {car.warranty === true ? (
+              {showWarranty ? (
                 <Badge tone="success">
                   Gewährleistung{car.warrantyMonths ? ` ${car.warrantyMonths} Monate` : ''}
                 </Badge>
@@ -382,7 +395,7 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
               netPrice={car.netPrice}
               vat={car.vat}
               priceType={humanLabel(car.priceType)}
-              warranty={car.warranty}
+              warranty={showWarranty}
               warrantyMonths={car.warrantyMonths}
               title={`${car.make} ${car.model}${car.modelDescription ? ` ${car.modelDescription}` : ''}`}
             />
