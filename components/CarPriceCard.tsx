@@ -15,8 +15,10 @@ interface CarPriceCardProps {
   title: string
 }
 
-const PHONE_NUMBER = '+491773225218'
-const PHONE_DISPLAY = '0177 3225218'
+const PRIMARY_PHONE_TEL = '+4917662333406'
+const PRIMARY_PHONE_DISPLAY = '0176 62333406'
+const SECONDARY_PHONE_TEL = '+491773225218'
+const SECONDARY_PHONE_DISPLAY = '0177 3225218'
 const WHATSAPP_NUMBER = '4917662333406'
 const CONTACT_EMAIL = 'info@kd-car.de'
 
@@ -73,22 +75,41 @@ export default function CarPriceCard({
           ) : null}
 
           <Link
-            href={`tel:${PHONE_NUMBER}`}
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary-600 px-5 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-primary-700"
+            href={`tel:${PRIMARY_PHONE_TEL}`}
+            className="group flex w-full flex-col items-center justify-center gap-0.5 rounded-xl bg-primary-600 px-5 py-3.5 text-white shadow-sm transition hover:bg-primary-700"
           >
-            <Phone className="h-5 w-5" />
-            <span>{PHONE_DISPLAY}</span>
+            <span className="flex items-center gap-2 text-base font-semibold">
+              <Phone className="h-5 w-5" />
+              {PRIMARY_PHONE_DISPLAY}
+            </span>
+            <span className="text-[11px] font-medium uppercase tracking-wide text-primary-100">
+              Direkt anrufen
+            </span>
           </Link>
 
-          <Link
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex w-full items-center justify-center gap-2 rounded-xl border border-green-500 bg-green-50 px-5 py-3 text-sm font-semibold text-green-700 transition hover:bg-green-100"
-          >
-            <MessageCircle className="h-5 w-5" />
-            <span>WhatsApp</span>
-          </Link>
+          <div className="grid grid-cols-2 gap-2">
+            <Link
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 rounded-xl border border-green-500 bg-green-50 px-3 py-3 text-sm font-semibold text-green-700 transition hover:bg-green-100"
+            >
+              <MessageCircle className="h-5 w-5" />
+              <span>WhatsApp</span>
+            </Link>
+
+            <Link
+              href={`tel:${SECONDARY_PHONE_TEL}`}
+              className="flex items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-3 py-3 text-sm font-semibold text-dark-900 transition hover:bg-gray-50"
+            >
+              <Phone className="h-4 w-4 text-primary-600" />
+              <span className="truncate">{SECONDARY_PHONE_DISPLAY}</span>
+            </Link>
+          </div>
+
+          <p className="text-center text-[11px] text-dark-400">
+            Bitte zuerst die {PRIMARY_PHONE_DISPLAY} versuchen.
+          </p>
 
           <Link
             href={mailtoLink}
