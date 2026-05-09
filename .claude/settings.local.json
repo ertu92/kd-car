@@ -11,7 +11,8 @@
       "Bash(node -e \"const j=require\\('/tmp/cars.json'\\); console.log\\('cars:', j.cars?.length, 'first slug:', j.cars?.[0]?.slug\\)\")",
       "Bash(curl *)",
       "Bash(kill %1)",
-      "Bash(pkill -f \"next dev\")"
+      "Bash(pkill -f \"next dev\")",
+      "Bash(python3 -c ' *)"
     ],
     "deny": [],
     "ask": []

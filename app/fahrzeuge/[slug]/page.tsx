@@ -295,7 +295,7 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
           </header>
 
           <div className="grid gap-4 sm:gap-6 lg:grid-cols-3">
-            <div className="space-y-4 sm:space-y-6 lg:col-span-2">
+            <div className="min-w-0 space-y-4 sm:space-y-6 lg:col-span-2">
               <CarGallery images={car.images} alt={`${car.make} ${car.model}`} />
 
               {/* Mobile price block — directly under gallery for visibility */}
@@ -363,7 +363,7 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
                         className="flex items-start gap-2 text-sm text-dark-700"
                       >
                         <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary-500" />
-                        <span>{feature}</span>
+                        <span className="min-w-0 break-words">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -379,18 +379,18 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
                   </h2>
                   <div className="space-y-3 text-sm leading-relaxed text-dark-700 sm:space-y-4 sm:text-base">
                     {proseBlocks.map((block, i) => (
-                      <div key={`${block.heading ?? 'block'}-${i}`}>
+                      <div key={`${block.heading ?? 'block'}-${i}`} className="min-w-0">
                         {block.heading ? (
-                          <h3 className="mb-2 font-semibold text-dark-900">{block.heading}</h3>
+                          <h3 className="mb-2 font-semibold text-dark-900 break-words">{block.heading}</h3>
                         ) : null}
                         {block.lines.length > 1 ? (
                           <ul className="list-disc space-y-1 pl-5 marker:text-primary-500">
                             {block.lines.map((line, j) => (
-                              <li key={j}>{line}</li>
+                              <li key={j} className="break-words [overflow-wrap:anywhere]">{line}</li>
                             ))}
                           </ul>
                         ) : block.lines[0] ? (
-                          <p>{block.lines[0]}</p>
+                          <p className="break-words [overflow-wrap:anywhere]">{block.lines[0]}</p>
                         ) : null}
                       </div>
                     ))}

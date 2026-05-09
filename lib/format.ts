@@ -200,6 +200,8 @@ function splitListLines(text: string): string[] {
     .split('\n')
     .map((l) => l.replace(/\*+/g, '').trim())
     .filter(Boolean)
+    // Drop visual separator lines (rows of _, -, =, *) that mobile.de inserts.
+    .filter((l) => !/^[_\-=*\s]{4,}$/.test(l))
 
   if (lines.length === 1 && lines[0].split(',').length > 6) {
     return lines[0].split(',').map((s) => s.trim()).filter(Boolean)
