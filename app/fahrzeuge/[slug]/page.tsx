@@ -25,6 +25,7 @@ import {
 import CarGallery from '@/components/CarGallery'
 import CarSpecsGrid from '@/components/CarSpecsGrid'
 import CarPriceCard from '@/components/CarPriceCard'
+import MobileContactBar from '@/components/MobileContactBar'
 import { getInventoryCar } from '@/lib/carms'
 import {
   formatDateMonthYear,
@@ -32,6 +33,7 @@ import {
   formatMileage,
   formatNumber,
   formatPower,
+  formatPrice,
   humanLabel,
   parseDescriptionParagraphs,
 } from '@/lib/format'
@@ -90,6 +92,8 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
 
   const ezDate = formatDateMonthYear(car.firstRegistration) ?? String(car.year)
   const huDate = formatDateMonthYear(car.hu)
+
+  const fullTitle = `${car.make} ${car.model}${car.modelDescription ? ` ${car.modelDescription}` : ''}`
 
   const headlineSpecs: Array<{ icon: typeof Calendar; label: string; value: string }> = [
     { icon: Calendar, label: 'Erstzulassung', value: ezDate },
@@ -246,34 +250,35 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
   )
 
   return (
-    <div className="bg-gray-50 pb-16 pt-24 sm:pt-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <>
+      <div className="bg-gray-50 pb-28 pt-20 sm:pt-24 lg:pb-16 lg:pt-28">
+        <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8">
           {/* Breadcrumb */}
-          <nav className="mb-4 flex items-center gap-1 text-sm text-dark-500">
+          <nav className="mb-3 flex items-center gap-1 overflow-hidden text-xs text-dark-500 sm:text-sm">
             <Link href="/" className="hover:text-primary-600">
               Start
             </Link>
-            <ChevronRight className="h-3.5 w-3.5" />
-            <Link href="/inventory" className="hover:text-primary-600">
+            <ChevronRight className="h-3.5 w-3.5 flex-shrink-0" />
+            <Link href="/inventory" className="hover:text-primary-600 whitespace-nowrap">
               Fahrzeugbestand
             </Link>
-            <ChevronRight className="h-3.5 w-3.5" />
+            <ChevronRight className="h-3.5 w-3.5 flex-shrink-0" />
             <span className="truncate text-dark-900">
               {car.make} {car.model}
             </span>
           </nav>
 
           {/* Headline */}
-          <header className="mb-6">
-            <h1 className="text-2xl font-display font-bold text-dark-900 sm:text-3xl lg:text-4xl">
+          <header className="mb-4 sm:mb-6">
+            <h1 className="text-xl font-display font-bold leading-tight text-dark-900 sm:text-3xl lg:text-4xl">
               {car.make} {car.model}
             </h1>
             {car.modelDescription ? (
-              <p className="mt-1 text-base text-dark-600 sm:text-lg">
+              <p className="mt-1 text-sm text-dark-600 sm:text-lg">
                 {car.modelDescription}
               </p>
             ) : null}
-            <div className="mt-3 flex flex-wrap items-center gap-2">
+            <div className="mt-2.5 flex flex-wrap items-center gap-1.5 sm:mt-3 sm:gap-2">
               {car.condition ? <Badge>{humanLabel(car.condition) ?? car.condition}</Badge> : null}
               {car.firstRegistration ? <Badge tone="muted">EZ {ezDate}</Badge> : null}
               {car.accidentFree === true ? <Badge tone="success">Unfallfrei</Badge> : null}
@@ -289,22 +294,42 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
             </div>
           </header>
 
-          <div className="grid gap-6 lg:grid-cols-3">
-            <div className="space-y-6 lg:col-span-2">
+          <div className="grid gap-4 sm:gap-6 lg:grid-cols-3">
+            <div className="space-y-4 sm:space-y-6 lg:col-span-2">
               <CarGallery images={car.images} alt={`${car.make} ${car.model}`} />
 
+              {/* Mobile price block — directly under gallery for visibility */}
+              <section className="rounded-2xl bg-white p-4 shadow-sm lg:hidden">
+                <div className="flex items-end justify-between gap-3">
+                  <div className="min-w-0">
+                    <p className="text-[11px] uppercase tracking-wide text-dark-500">Preis</p>
+                    <p className="text-2xl font-display font-bold leading-none text-dark-900">
+                      {formatPrice(car.price)}
+                    </p>
+                    <p className="mt-1 text-[11px] text-dark-500">
+                      {car.vat ? 'Inkl. MwSt., MwSt. ausweisbar' : 'Differenzbest. nach §25a UStG'}
+                    </p>
+                  </div>
+                  {showWarranty ? (
+                    <span className="flex-shrink-0 rounded-full bg-green-50 px-2.5 py-1 text-[10px] font-semibold text-green-700">
+                      Gewährleistung{car.warrantyMonths ? ` ${car.warrantyMonths}M` : ''}
+                    </span>
+                  ) : null}
+                </div>
+              </section>
+
               {/* Headline-spec strip */}
-              <section className="rounded-2xl bg-white p-4 shadow-sm sm:p-5">
-                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+              <section className="rounded-2xl bg-white p-3 shadow-sm sm:p-5">
+                <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3 lg:grid-cols-6">
                   {headlineSpecs.map(({ icon: Icon, label, value }) => (
                     <div
                       key={label}
-                      className="flex items-center gap-3 rounded-xl bg-gray-50 px-3 py-3"
+                      className="flex items-center gap-2 rounded-xl bg-gray-50 px-2.5 py-2.5 sm:gap-3 sm:px-3 sm:py-3"
                     >
-                      <Icon className="h-5 w-5 flex-shrink-0 text-primary-600" />
+                      <Icon className="h-4 w-4 flex-shrink-0 text-primary-600 sm:h-5 sm:w-5" />
                       <div className="min-w-0">
-                        <p className="text-xs text-dark-500">{label}</p>
-                        <p className="truncate text-sm font-semibold text-dark-900">{value}</p>
+                        <p className="text-[10px] leading-tight text-dark-500 sm:text-xs">{label}</p>
+                        <p className="truncate text-xs font-semibold leading-tight text-dark-900 sm:text-sm">{value}</p>
                       </div>
                     </div>
                   ))}
@@ -327,11 +352,11 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
 
               {/* Equipment list */}
               {equipmentFromDescription.length > 0 && (
-                <section className="rounded-2xl bg-white p-5 shadow-sm sm:p-6">
-                  <h2 className="mb-4 text-lg font-display font-semibold text-dark-900 sm:text-xl">
+                <section className="rounded-2xl bg-white p-4 shadow-sm sm:p-6">
+                  <h2 className="mb-3 text-base font-display font-semibold text-dark-900 sm:mb-4 sm:text-xl">
                     Ausstattung
                   </h2>
-                  <ul className="grid grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-2">
+                  <ul className="grid grid-cols-1 gap-x-6 gap-y-1.5 sm:grid-cols-2 sm:gap-y-2">
                     {equipmentFromDescription.map((feature) => (
                       <li
                         key={feature}
@@ -347,12 +372,12 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
 
               {/* Description */}
               {proseBlocks.length > 0 && (
-                <section className="rounded-2xl bg-white p-5 shadow-sm sm:p-6">
-                  <h2 className="mb-4 flex items-center gap-2 text-lg font-display font-semibold text-dark-900 sm:text-xl">
+                <section className="rounded-2xl bg-white p-4 shadow-sm sm:p-6">
+                  <h2 className="mb-3 flex items-center gap-2 text-base font-display font-semibold text-dark-900 sm:mb-4 sm:text-xl">
                     <ScrollText className="h-5 w-5 text-primary-600" />
                     Fahrzeugbeschreibung
                   </h2>
-                  <div className="space-y-4 text-sm leading-relaxed text-dark-700 sm:text-base">
+                  <div className="space-y-3 text-sm leading-relaxed text-dark-700 sm:space-y-4 sm:text-base">
                     {proseBlocks.map((block, i) => (
                       <div key={`${block.heading ?? 'block'}-${i}`}>
                         {block.heading ? (
@@ -397,11 +422,14 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
               priceType={humanLabel(car.priceType)}
               warranty={showWarranty}
               warrantyMonths={car.warrantyMonths}
-              title={`${car.make} ${car.model}${car.modelDescription ? ` ${car.modelDescription}` : ''}`}
+              title={fullTitle}
             />
           </div>
         </div>
-    </div>
+      </div>
+
+      <MobileContactBar price={car.price} vat={car.vat} title={fullTitle} />
+    </>
   )
 }
 
@@ -423,12 +451,12 @@ function Badge({
 }) {
   const tones: Record<string, string> = {
     primary: 'bg-primary-100 text-primary-700',
-    muted: 'bg-gray-100 text-dark-700',
+    muted: 'bg-gray-100 text-gray-700',
     success: 'bg-green-100 text-green-700',
   }
   return (
     <span
-      className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-medium ${tones[tone]}`}
+      className={`inline-flex items-center rounded-full px-2.5 py-1 text-[11px] font-medium sm:px-3 sm:text-xs ${tones[tone]}`}
     >
       {children}
     </span>
