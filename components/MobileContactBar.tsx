@@ -28,7 +28,7 @@ export default function MobileContactBar({ price, vat, title }: MobileContactBar
           <p className="text-[10px] uppercase tracking-wide text-dark-500">Preis</p>
           <p className="truncate text-base font-bold text-dark-900">{formatPrice(price)}</p>
           <p className="truncate text-[10px] text-dark-500">
-            {vat ? 'inkl. MwSt.' : '§25a UStG'}
+            {vat ? 'inkl. MwSt.' : 'MwSt. nicht ausw.'}
           </p>
         </div>
 

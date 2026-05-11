@@ -307,7 +307,7 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
                       {formatPrice(car.price)}
                     </p>
                     <p className="mt-1 text-[11px] text-dark-500">
-                      {car.vat ? 'Inkl. MwSt., MwSt. ausweisbar' : 'Differenzbest. nach §25a UStG'}
+                      {car.vat ? 'Inkl. MwSt. (ausweisbar)' : 'Inkl. MwSt. (nicht ausweisbar)'}
                     </p>
                   </div>
                   {showWarranty ? (

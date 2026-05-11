@@ -54,7 +54,7 @@ export default function CarPriceCard({
             {formatPrice(price)}
           </p>
           <p className="mt-1 text-xs text-dark-500">
-            {vat ? 'Inkl. MwSt., MwSt. ausweisbar' : 'Differenzbesteuert nach §25a UStG'}
+            {vat ? 'Inkl. MwSt. (ausweisbar)' : 'Inkl. MwSt. (nicht ausweisbar)'}
             {priceType ? ` · ${priceType}` : ''}
           </p>
           {netPrice ? (
