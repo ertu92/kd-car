@@ -281,7 +281,6 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
             <div className="mt-2.5 flex flex-wrap items-center gap-1.5 sm:mt-3 sm:gap-2">
               {car.condition ? <Badge>{humanLabel(car.condition) ?? car.condition}</Badge> : null}
               {car.firstRegistration ? <Badge tone="muted">EZ {ezDate}</Badge> : null}
-              {car.accidentFree === true ? <Badge tone="success">Unfallfrei</Badge> : null}
               {showWarranty ? (
                 <Badge tone="success">
                   Gewährleistung{car.warrantyMonths ? ` ${car.warrantyMonths} Monate` : ''}
