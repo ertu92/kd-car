@@ -37,6 +37,14 @@ export default function ImpressumPage() {
                 <p>46045 Oberhausen</p>
                 <p>Deutschland</p>
               </div>
+              <div>
+                <p className="font-medium">Umsatzsteuer-ID:</p>
+                <p>
+                  Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:
+                  <br />
+                  DE452239993
+                </p>
+              </div>
             </div>
           </section>
 
