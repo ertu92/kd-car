@@ -3,13 +3,10 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
-import { 
-  Sparkles, 
-  Wrench, 
-  Palette, 
-  Shield, 
-  Zap, 
-  Car,
+import Link from 'next/link'
+import { services, type Service } from '@/lib/services'
+import {
+  Shield,
   ArrowRight,
   Star,
   X,
@@ -18,181 +15,6 @@ import {
   Award,
   Users
 } from 'lucide-react'
-
-interface Service {
-  id: number
-  title: string
-  subtitle: string
-  description: string
-  icon: React.ComponentType<{ className?: string }>
-  image: string
-  features: string[]
-  price: string
-  detailedDescription: string
-  process: string[]
-  benefits: string[]
-  duration: string
-  warranty: string
-}
-
-const services: Service[] = [
-  {
-    id: 1,
-    title: 'AN- UND VERKAUF',
-    subtitle: 'Autohandel',
-    description: 'Wir kaufen Ihr Auto an oder nehmen es in Zahlung für ein Neues.',
-    icon: Zap,
-    image: 'https://images.unsplash.com/photo-1563720223185-11003d516935?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    features: ['Schnelle Abwicklung', 'Garantie inklusive', 'Lieferung möglich'],
-    price: 'ab €299',
-    detailedDescription: 'Seriöser An- und Verkauf basiert auf Fakten: Deshalb durchläuft jedes Fahrzeug bei uns eine gründliche technische Analyse. Mit modernsten Diagnosegeräten ermitteln wir den exakten Zustand – das bedeutet für Sie: Faire Ankaufspreise und geprüfte Sicherheit beim Autokauf.',
-    process: [
-      'Kostenlose Fahrzeugbewertung',
-      'Technische Diagnose und Zustandsprüfung',
-      'Transparente Preisverhandlung',
-      'Unkomplizierte Abwicklung',
-      'Übergabe mit allen Dokumenten'
-    ],
-    benefits: [
-      'Faire und marktgerechte Preise',
-      'Geprüfte Gebrauchtfahrzeuge',
-      'Inzahlungnahme möglich',
-      'Schnelle und sichere Abwicklung'
-    ],
-    duration: '1-3 Tage',
-    warranty: '1 Jahr'
-  },
-  {
-    id: 2,
-    title: 'UNFALLINSTANDSETZUNG',
-    subtitle: 'Lackierung & Reparatur',
-    description: 'Professionelle Fahrzeug-Instandsetzung mit modernsten Lackiertechniken und Smart Repair-Methoden für perfekte Ergebnisse.',
-    icon: Palette,
-    image: '/images/carwrap.jpg',
-    features: ['Lackieren', 'Smart Repair', 'Gutachten', 'Professionelle Aufbereitung'],
-    price: 'ab €150',
-    detailedDescription: 'Wir verwenden ausschließlich hochwertige Lackmaterialien und moderne Smart Repair-Techniken. Jede Instandsetzung wird mit höchster Präzision und Sorgfalt ausgeführt.',
-    process: [
-      'Beratung und Schadensanalyse',
-      'Fahrzeugvorbereitung und Reinigung',
-      'Smart Repair oder Volllackierung',
-      'Professionelle Verarbeitung',
-      'Qualitätskontrolle und Finish'
-    ],
-    benefits: [
-      'Moderne Smart Repair-Techniken',
-      'Hochwertige Lackmaterialien',
-      'Professionelle Verarbeitung',
-      'Langlebige Qualität'
-    ],
-    duration: '2-3 Tage, bei größeren Arbeiten auch länger',
-    warranty: 'garantiert saubere Arbeit'
-  },
-  {
-    id: 3,
-    title: 'FAHRZEUGAUFBEREITUNG',
-    subtitle: 'Leasingrückläufer',
-    description: 'Professionelle Aufbereitung für Leasingrückläufer – damit Ihr Fahrzeug bei der Rückgabe keine unnötigen Kosten verursacht.',
-    icon: Car,
-    image: '/images/body.jpg',
-    features: ['Innen- & Außenreinigung', 'Kratzerentfernung', 'Polster- & Lederaufbereitung', 'Lackaufbereitung'],
-    price: 'ab €100',
-    detailedDescription: 'Bei der Leasingrückgabe zählt jedes Detail. Wir bereiten Ihr Fahrzeug so auf, dass es den strengen Prüfkriterien der Leasinggesellschaft standhält – und Sie teure Nachbelastungen vermeiden.',
-    process: [
-      'Zustandsanalyse und Dokumentation',
-      'Professionelle Innen- und Außenreinigung',
-      'Kratzer- und Dellenbehebung',
-      'Polster-, Leder- und Kunststoffpflege',
-      'Endkontrolle nach Leasingstandards'
-    ],
-    benefits: [
-      'Vermeidung teurer Nachbelastungen',
-      'Fahrzeug wie im Originalzustand',
-      'Professionelle Dokumentation',
-      'Stressfreie Leasingrückgabe'
-    ],
-    duration: '1-2 Tage',
-    warranty: 'garantiert saubere Arbeit'
-  },
-  {
-    id: 4,
-    title: 'BEULENDOKTOR',
-    subtitle: 'Dellenentfernung ohne Lackierung',
-    description: 'Professionelle Dellenentfernung ohne Nachlackieren – schnell, schonend und kostengünstig mit der PDR-Methode.',
-    icon: Shield,
-    image: 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    features: ['Ohne Nachlackieren', 'Hagelschäden', 'Parkdellen', 'Originallack bleibt erhalten'],
-    price: 'ab €30',
-    detailedDescription: 'Mit der bewährten PDR-Methode (Paintless Dent Repair) entfernen wir Dellen und Beulen, ohne den Originallack Ihres Fahrzeugs zu beschädigen. Das spart Zeit, Geld und erhält den Wert Ihres Autos.',
-    process: [
-      'Begutachtung und Schadensanalyse',
-      'Zugang zur Delle von der Rückseite',
-      'Präzises Herausdrücken mit Spezialwerkzeug',
-      'Feinarbeit und Kontrolle der Oberfläche',
-      'Endkontrolle und Qualitätssicherung'
-    ],
-    benefits: [
-      'Originallack bleibt erhalten',
-      'Deutlich günstiger als Neulackierung',
-      'Schnelle Bearbeitung',
-      'Werterhalt des Fahrzeugs'
-    ],
-    duration: 'Je nach Umfang wenige Stunden bis 1 Tag',
-    warranty: 'garantiert saubere Arbeit'
-  },
-  {
-    id: 5,
-    title: 'FELGENREPARATUR',
-    subtitle: 'Ohne Drehen',
-    description: 'Professionelle Felgenreparatur ohne Abdrehen – Kratzer, Bordsteinschäden und Beschädigungen werden unsichtbar beseitigt.',
-    icon: Sparkles,
-    image: 'https://images.unsplash.com/photo-1769899107195-aae414826ced?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    features: ['Ohne Abdrehen', 'Kratzer & Bordsteinschäden', 'Farbaufbereitung', 'Alle Felgenarten'],
-    price: 'ab €99',
-    detailedDescription: 'Unsere Felgenreparatur kommt ohne Abdrehen aus – das schont Material und Struktur Ihrer Felgen. Kratzer, Bordsteinschäden und Farbabplatzer werden fachgerecht aufgearbeitet, sodass Ihre Felgen wieder wie neu aussehen.',
-    process: [
-      'Schadensanalyse und Begutachtung',
-      'Reinigung und Vorbereitung der Felge',
-      'Professionelles Auffüllen und Glätten',
-      'Farbanpassung und Lackierung',
-      'Endkontrolle und Qualitätssicherung'
-    ],
-    benefits: [
-      'Kein Abdrehen nötig',
-      'Originalstruktur bleibt erhalten',
-      'Schnelle Bearbeitung',
-      'Deutlich günstiger als Neuanschaffung'
-    ],
-    duration: 'Wenige Stunden pro Felge',
-    warranty: 'garantiert saubere Arbeit'
-  },
-  {
-    id: 6,
-    title: 'AUTOGLAS',
-    subtitle: 'Reparatur & Austausch',
-    description: 'Steinschlag, Risse oder kompletter Scheibentausch – wir reparieren und ersetzen Ihr Autoglas schnell und professionell.',
-    icon: Wrench,
-    image: 'https://images.unsplash.com/photo-1676848649653-5b61b670a35d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    features: ['Steinschlagreparatur', 'Scheibentausch', 'Alle Fahrzeugtypen', 'Versicherungsabwicklung'],
-    price: 'ab €150',
-    detailedDescription: 'Ob kleiner Steinschlag oder komplett beschädigte Windschutzscheibe – wir kümmern uns um die fachgerechte Reparatur oder den Austausch Ihres Autoglases. Auf Wunsch übernehmen wir auch die Abwicklung mit Ihrer Versicherung.',
-    process: [
-      'Schadensanalyse und Begutachtung',
-      'Prüfung ob Reparatur oder Austausch nötig',
-      'Professionelle Reparatur oder Einbau',
-      'Kalibrierung der Fahrassistenzsysteme',
-      'Endkontrolle und Qualitätssicherung'
-    ],
-    benefits: [
-      'Schnelle Steinschlagreparatur',
-      'Originalglas oder gleichwertig',
-      'Versicherungsabwicklung möglich',
-      'Alle Marken und Modelle'
-    ],
-    duration: 'Reparatur: ca. 30 Min. / Austausch: 2-3 Std.',
-    warranty: 'garantiert saubere Arbeit'
-  }
-]
 
 export default function ServicesSection() {
   const [selectedService, setSelectedService] = useState<Service | null>(null)
@@ -462,7 +284,7 @@ export default function ServicesSection() {
                       Kontaktieren Sie uns für ein persönliches Beratungsgespräch und lassen Sie uns gemeinsam Ihr Fahrzeug zum Strahlen bringen!
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                             <button 
+                                             <button
                          onClick={() => {
                            const contactSection = document.getElementById('contact');
                            if (contactSection) {
@@ -474,7 +296,16 @@ export default function ServicesSection() {
                        >
                          Jetzt Termin vereinbaren
                        </button>
-                      <button 
+                      <Link
+                        href={`/leistungen/${selectedService.slug}`}
+                        className="btn-outline text-lg px-8 py-4"
+                      >
+                        <span className="flex items-center justify-center space-x-2">
+                          <span>Zur Leistungsseite</span>
+                          <ArrowRight className="w-4 h-4" />
+                        </span>
+                      </Link>
+                      <button
                         onClick={closeModal}
                         className="btn-outline text-lg px-8 py-4"
                       >

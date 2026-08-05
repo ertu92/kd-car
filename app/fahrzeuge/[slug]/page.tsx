@@ -61,6 +61,7 @@ export async function generateMetadata({ params }: CarDetailPageProps): Promise<
   return {
     title,
     description,
+    alternates: { canonical: `/fahrzeuge/${car.slug}` },
     openGraph: {
       title,
       description,
@@ -249,8 +250,22 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
     (block) => !block.heading || !/Ausstattung|Sonderausstattung/i.test(block.heading)
   )
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Startseite', item: 'https://kd-car.de/' },
+      { '@type': 'ListItem', position: 2, name: 'Fahrzeugbestand', item: 'https://kd-car.de/inventory' },
+      { '@type': 'ListItem', position: 3, name: fullTitle, item: `https://kd-car.de/fahrzeuge/${car.slug}` },
+    ],
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <div className="bg-gray-50 pb-28 pt-20 sm:pt-24 lg:pb-16 lg:pt-28">
         <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8">
           {/* Breadcrumb */}

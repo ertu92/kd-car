@@ -21,6 +21,7 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://kd-car.de'),
   title: 'KD-CAR - Autoaufbereitung und mehr | Professionelle Fahrzeugaufbereitung',
   description: 'Professionelle Autoaufbereitung, Beulendoktor, Autofolierung, Autoglas-Reparatur, Smart Repair und Tuning. Ihr zuverlässiger Partner für alles rund ums Auto in Deutschland.',
   keywords: 'Autoaufbereitung, Beulendoktor, Autofolierung, Autoglas-Reparatur, Smart Repair, Tuning, Fahrzeugaufbereitung, Deutschland',
@@ -35,6 +36,29 @@ export const metadata: Metadata = {
   },
 }
 
+const localBusinessJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'AutoRepair',
+  '@id': 'https://kd-car.de/#business',
+  name: 'KD-CAR',
+  description:
+    'Professionelle Autoaufbereitung, Beulendoktor, Autofolierung, Autoglas-Reparatur, Smart Repair und Tuning in Oberhausen.',
+  url: 'https://kd-car.de',
+  telephone: '+491773225218',
+  email: 'info@kd-car.de',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Mülheimerstraße 33',
+    addressLocality: 'Oberhausen',
+    postalCode: '46045',
+    addressCountry: 'DE',
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Oberhausen' },
+    { '@type': 'Place', name: 'Ruhrgebiet' },
+  ],
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -43,6 +67,10 @@ export default function RootLayout({
   return (
     <html lang="de" className="overflow-x-clip">
       <body className={`${inter.className} ${poppins.variable} overflow-x-clip`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+        />
         <Header />
         <main>
           {children}

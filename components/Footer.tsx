@@ -12,12 +12,12 @@ import Link from 'next/link'
 
 const footerLinks = {
   services: [
-    { name: 'Fahrzeugaufbereitung', href: '#services' },
-    { name: 'Beulendoktor', href: '#services' },
-    { name: 'Autofolierung', href: '#services' },
-    { name: 'Autoglas-Reparatur', href: '#services' },
-    { name: 'Smart Repair', href: '#services' },
-    { name: 'Tuning', href: '#services' }
+    { name: 'Auto An- und Verkauf', href: '/leistungen/auto-an-und-verkauf' },
+    { name: 'Unfallinstandsetzung', href: '/leistungen/unfallinstandsetzung' },
+    { name: 'Fahrzeugaufbereitung', href: '/leistungen/fahrzeugaufbereitung' },
+    { name: 'Beulendoktor', href: '/leistungen/beulendoktor' },
+    { name: 'Felgenreparatur', href: '/leistungen/felgenreparatur' },
+    { name: 'Autoglas-Reparatur', href: '/leistungen/autoglas' }
   ],
   company: [
     { name: 'Über uns', href: '#about' }

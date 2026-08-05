@@ -4,11 +4,25 @@ import { Mail, Phone, MapPin, Building, Shield, FileText } from 'lucide-react'
 export const metadata: Metadata = {
   title: 'Impressum - KD-CAR | Rechtliche Informationen',
   description: 'Rechtliche Informationen und Impressum von KD-CAR - Autoaufbereitung und mehr. Alle wichtigen rechtlichen Angaben auf einen Blick.',
+  alternates: { canonical: '/impressum' },
+}
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Startseite', item: 'https://kd-car.de/' },
+    { '@type': 'ListItem', position: 2, name: 'Impressum', item: 'https://kd-car.de/impressum' },
+  ],
 }
 
 export default function ImpressumPage() {
   return (
     <div className="min-h-screen bg-gray-50">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* Header Section */}
       <div className="bg-gradient-to-r from-blue-600 to-primary-600 text-white pt-10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
