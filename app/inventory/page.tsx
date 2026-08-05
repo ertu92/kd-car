@@ -1,5 +1,10 @@
 import InventorySection from '@/components/InventorySection'
 import ContactSection from '@/components/ContactSection'
+import { getInventoryCars } from '@/lib/carms'
+
+// Fahrzeuge serverseitig laden, damit Crawler echte Inhalte statt des
+// Ladezustands sehen (GSC meldete sonst Soft 404).
+export const dynamic = 'force-dynamic'
 
 export const metadata = {
   title: 'Fahrzeugbestand - KD-CAR | Premium Autos zum Verkauf',
@@ -17,14 +22,16 @@ const breadcrumbJsonLd = {
   ],
 }
 
-export default function Inventory() {
+export default async function Inventory() {
+  const { cars, source, error } = await getInventoryCars()
+
   return (
     <div className="pt-20">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <InventorySection />
+      <InventorySection initialCars={cars} initialSource={source} initialError={error ?? null} />
       <ContactSection />
     </div>
   )

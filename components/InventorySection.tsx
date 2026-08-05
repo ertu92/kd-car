@@ -14,18 +14,32 @@ type CarsResponse = {
   error?: string
 }
 
-export default function InventorySection() {
-  const [cars, setCars] = useState<InventoryCar[]>([])
+interface InventorySectionProps {
+  // Serverseitig geladene Startdaten (app/inventory/page.tsx). Wenn gesetzt,
+  // steht der Bestand schon im initialen HTML und der Client-Fetch entfällt.
+  initialCars?: InventoryCar[]
+  initialSource?: DataSource
+  initialError?: string | null
+}
+
+export default function InventorySection({
+  initialCars,
+  initialSource,
+  initialError,
+}: InventorySectionProps = {}) {
+  const [cars, setCars] = useState<InventoryCar[]>(initialCars ?? [])
   const [searchTerm, setSearchTerm] = useState('')
   const [viewMode, setViewMode] = useState<ViewMode>('grid')
   const [filterYear, setFilterYear] = useState('all')
   const [filterMake, setFilterMake] = useState('all')
   const [filtersOpen, setFiltersOpen] = useState(false)
-  const [dataSource, setDataSource] = useState<DataSource>('local')
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+  const [dataSource, setDataSource] = useState<DataSource>(initialSource ?? 'local')
+  const [loading, setLoading] = useState(!initialCars)
+  const [error, setError] = useState<string | null>(initialError ?? null)
 
   useEffect(() => {
+    if (initialCars) return
+
     let cancelled = false
 
     async function loadCars() {
@@ -67,7 +81,7 @@ export default function InventorySection() {
     return () => {
       cancelled = true
     }
-  }, [])
+  }, [initialCars])
 
   useEffect(() => {
     const handleResize = () => {
