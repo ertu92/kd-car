@@ -21,7 +21,7 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://kd-car.de'),
+  metadataBase: new URL('https://www.kd-car.de'),
   title: 'KD-CAR - Autoaufbereitung und mehr | Professionelle Fahrzeugaufbereitung',
   description: 'Professionelle Autoaufbereitung, Beulendoktor, Autofolierung, Autoglas-Reparatur, Smart Repair und Tuning. Ihr zuverlässiger Partner für alles rund ums Auto in Deutschland.',
   keywords: 'Autoaufbereitung, Beulendoktor, Autofolierung, Autoglas-Reparatur, Smart Repair, Tuning, Fahrzeugaufbereitung, Deutschland',
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'KD-CAR - Autoaufbereitung und mehr',
     description: 'Professionelle Autoaufbereitung und mehr - Qualität, die begeistert',
-    url: 'https://kd-car.de',
+    url: 'https://www.kd-car.de',
     siteName: 'KD-CAR',
     locale: 'de_DE',
     type: 'website',
@@ -39,11 +39,11 @@ export const metadata: Metadata = {
 const localBusinessJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'AutoRepair',
-  '@id': 'https://kd-car.de/#business',
+  '@id': 'https://www.kd-car.de/#business',
   name: 'KD-CAR',
   description:
     'Professionelle Autoaufbereitung, Beulendoktor, Autofolierung, Autoglas-Reparatur, Smart Repair und Tuning in Oberhausen.',
-  url: 'https://kd-car.de',
+  url: 'https://www.kd-car.de',
   telephone: '+491773225218',
   email: 'info@kd-car.de',
   address: {

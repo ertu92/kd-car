@@ -11,8 +11,8 @@ const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Startseite', item: 'https://kd-car.de/' },
-    { '@type': 'ListItem', position: 2, name: 'Impressum', item: 'https://kd-car.de/impressum' },
+    { '@type': 'ListItem', position: 1, name: 'Startseite', item: 'https://www.kd-car.de/' },
+    { '@type': 'ListItem', position: 2, name: 'Impressum', item: 'https://www.kd-car.de/impressum' },
   ],
 }
 

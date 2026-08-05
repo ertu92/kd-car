@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next'
 import { getInventoryCars } from '@/lib/carms'
 import { services } from '@/lib/services'
 
-const BASE_URL = 'https://kd-car.de'
+const BASE_URL = 'https://www.kd-car.de'
 
 // Fahrzeugbestand ändert sich — Sitemap täglich neu erzeugen.
 export const revalidate = 86400

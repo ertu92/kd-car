@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
     openGraph: {
       title: service.seoTitle,
       description: service.seoDescription,
-      url: `https://kd-car.de/leistungen/${service.slug}`,
+      url: `https://www.kd-car.de/leistungen/${service.slug}`,
       type: 'website',
       siteName: 'KD-CAR',
       locale: 'de_DE',
@@ -47,12 +47,12 @@ export default async function ServicePage({ params }: ServicePageProps) {
   const serviceJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    '@id': `https://kd-car.de/leistungen/${service.slug}#service`,
+    '@id': `https://www.kd-car.de/leistungen/${service.slug}#service`,
     name: service.seoTitle,
     serviceType: service.title,
     description: service.seoDescription,
-    url: `https://kd-car.de/leistungen/${service.slug}`,
-    provider: { '@id': 'https://kd-car.de/#business' },
+    url: `https://www.kd-car.de/leistungen/${service.slug}`,
+    provider: { '@id': 'https://www.kd-car.de/#business' },
     areaServed: [
       { '@type': 'City', name: 'Oberhausen' },
       { '@type': 'Place', name: 'Ruhrgebiet' },
@@ -63,13 +63,13 @@ export default async function ServicePage({ params }: ServicePageProps) {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Startseite', item: 'https://kd-car.de/' },
-      { '@type': 'ListItem', position: 2, name: 'Leistungen', item: 'https://kd-car.de/leistungen' },
+      { '@type': 'ListItem', position: 1, name: 'Startseite', item: 'https://www.kd-car.de/' },
+      { '@type': 'ListItem', position: 2, name: 'Leistungen', item: 'https://www.kd-car.de/leistungen' },
       {
         '@type': 'ListItem',
         position: 3,
         name: service.title,
-        item: `https://kd-car.de/leistungen/${service.slug}`,
+        item: `https://www.kd-car.de/leistungen/${service.slug}`,
       },
     ],
   }
