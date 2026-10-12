@@ -4,6 +4,7 @@ import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import CookieConsent from '@/components/CookieConsent'
+import GoogleAdsTag from '@/components/GoogleAdsTag'
 
 const inter = Inter({ subsets: ['latin'] })
 const poppins = Poppins({
@@ -77,6 +78,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <CookieConsent />
+        <GoogleAdsTag />
       </body>
     </html>
   )

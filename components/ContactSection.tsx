@@ -11,6 +11,7 @@ import {
   Star,
   MessageCircle
 } from 'lucide-react'
+import { trackConversion } from '@/lib/tracking'
 
 const contactInfo = [
   {
@@ -69,6 +70,7 @@ export default function ContactSection() {
       const data = await response.json()
 
       if (response.ok) {
+        trackConversion('lead', { form: 'startseite', service: formData.service })
         setSubmitStatus('success')
         setSubmitMessage('Ihre Nachricht wurde erfolgreich gesendet! Wir melden uns innerhalb von 24 Stunden bei Ihnen.')
         // Reset form

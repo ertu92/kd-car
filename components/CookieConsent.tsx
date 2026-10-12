@@ -4,32 +4,28 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Cookie, Shield, Info } from 'lucide-react'
 import Link from 'next/link'
+import { CONSENT_EVENT, CONSENT_STORAGE_KEY } from '@/lib/tracking'
 
 export default function CookieConsent() {
   const [showBanner, setShowBanner] = useState(false)
 
   useEffect(() => {
     // Check if user has already made a choice
-    const cookieConsent = localStorage.getItem('cookieConsent')
+    const cookieConsent = localStorage.getItem(CONSENT_STORAGE_KEY)
     if (!cookieConsent) {
       setShowBanner(true)
     }
   }, [])
 
-  const acceptAll = () => {
-    localStorage.setItem('cookieConsent', 'accepted')
+  const saveChoice = (choice: 'accepted' | 'necessary' | 'declined') => {
+    localStorage.setItem(CONSENT_STORAGE_KEY, choice)
+    window.dispatchEvent(new Event(CONSENT_EVENT))
     setShowBanner(false)
   }
 
-  const acceptNecessary = () => {
-    localStorage.setItem('cookieConsent', 'necessary')
-    setShowBanner(false)
-  }
-
-  const decline = () => {
-    localStorage.setItem('cookieConsent', 'declined')
-    setShowBanner(false)
-  }
+  const acceptAll = () => saveChoice('accepted')
+  const acceptNecessary = () => saveChoice('necessary')
+  const decline = () => saveChoice('declined')
 
   if (!showBanner) return null
 

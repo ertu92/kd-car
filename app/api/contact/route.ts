@@ -23,10 +23,11 @@ export async function POST(request: NextRequest) {
     console.log('Request data:', { name, email, phone: phone || 'not provided', service: service || 'not provided', message: message ? 'provided' : 'not provided' })
 
     // Validate required fields
-    if (!name || !email || !message) {
-      console.error('Missing required fields:', { name: !!name, email: !!email, message: !!message })
+    // Name + Nachricht sind Pflicht, dazu mindestens ein Kontaktweg (E-Mail oder Telefon).
+    if (!name || !message || (!email && !phone)) {
+      console.error('Missing required fields:', { name: !!name, email: !!email, phone: !!phone, message: !!message })
       return NextResponse.json(
-        { success: false, message: 'Name, E-Mail und Nachricht sind erforderlich' },
+        { success: false, message: 'Name, Nachricht und E-Mail oder Telefonnummer sind erforderlich' },
         { status: 400 }
       )
     }
@@ -57,7 +58,7 @@ export async function POST(request: NextRequest) {
           <div style="background-color: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <h3 style="color: #1e293b; margin-top: 0;">Kontaktdaten:</h3>
             <p><strong>Name:</strong> ${name}</p>
-            <p><strong>E-Mail:</strong> ${email}</p>
+            ${email ? `<p><strong>E-Mail:</strong> ${email}</p>` : ''}
             ${phone ? `<p><strong>Telefon:</strong> ${phone}</p>` : ''}
             ${service ? `<p><strong>Gewünschte Leistung:</strong> ${service}</p>` : ''}
           </div>
@@ -78,7 +79,7 @@ export async function POST(request: NextRequest) {
         
         Kontaktdaten:
         Name: ${name}
-        E-Mail: ${email}
+        ${email ? `E-Mail: ${email}` : ''}
         ${phone ? `Telefon: ${phone}` : ''}
         ${service ? `Gewünschte Leistung: ${service}` : ''}
         
