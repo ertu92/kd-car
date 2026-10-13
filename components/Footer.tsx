@@ -6,7 +6,8 @@ import {
   Mail, 
   MapPin, 
   Clock,
-  ArrowUp
+  ArrowUp,
+  Heart
 } from 'lucide-react'
 import Link from 'next/link'
 
@@ -182,6 +183,20 @@ export default function Footer() {
                 AGB
               </Link>
             </div>
+          </div>
+
+          <div className="mt-4 flex items-center justify-center gap-1 text-xs text-gray-500">
+            <span>Diese Seite wurde erstellt mit</span>
+            <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500" aria-label="Herz" />
+            <span>von</span>
+            <a
+              href="https://hobe-digital.de"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary-400 transition-colors duration-200"
+            >
+              hobe-digital
+            </a>
           </div>
         </motion.div>
       </div>
